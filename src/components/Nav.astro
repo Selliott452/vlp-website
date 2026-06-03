@@ -227,50 +227,52 @@ const links = [
 </style>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobile-nav');
+  function initNav() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
 
-  function openMenu() {
-    hamburger?.classList.add('open');
-    hamburger?.setAttribute('aria-expanded', 'true');
-    mobileNav?.classList.add('open');
-    mobileNav?.setAttribute('aria-hidden', 'false');
-    // iOS-safe scroll lock
-    document.body.dataset.scrollY = String(window.scrollY);
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${window.scrollY}px`;
-    document.body.style.width = '100%';
-  }
+    function openMenu() {
+      hamburger?.classList.add('open');
+      hamburger?.setAttribute('aria-expanded', 'true');
+      mobileNav?.classList.add('open');
+      mobileNav?.setAttribute('aria-hidden', 'false');
+      document.body.dataset.scrollY = String(window.scrollY);
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.width = '100%';
+    }
 
-  function closeMenu() {
-    hamburger?.classList.remove('open');
-    hamburger?.setAttribute('aria-expanded', 'false');
-    mobileNav?.classList.remove('open');
-    mobileNav?.setAttribute('aria-hidden', 'true');
-    // Restore scroll position
-    const scrollY = parseInt(document.body.dataset.scrollY ?? '0');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    window.scrollTo(0, scrollY);
-  }
+    function closeMenu() {
+      hamburger?.classList.remove('open');
+      hamburger?.setAttribute('aria-expanded', 'false');
+      mobileNav?.classList.remove('open');
+      mobileNav?.setAttribute('aria-hidden', 'true');
+      const scrollY = parseInt(document.body.dataset.scrollY ?? '0');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
+    }
 
-  hamburger?.addEventListener('click', () => {
-    mobileNav?.classList.contains('open') ? closeMenu() : openMenu();
-  });
-
-  mobileNav?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      closeMenu();
-      if (href?.includes('#')) {
-        e.preventDefault();
-        const anchor = href.split('#')[1];
-        setTimeout(() => {
-          const target = document.getElementById(anchor);
-          if (target) target.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
-      }
+    hamburger?.addEventListener('click', () => {
+      mobileNav?.classList.contains('open') ? closeMenu() : openMenu();
     });
-  });
+
+    mobileNav?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        closeMenu();
+        if (href?.includes('#')) {
+          e.preventDefault();
+          const anchor = href.split('#')[1];
+          setTimeout(() => {
+            const target = document.getElementById(anchor);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          }, 50);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initNav);
 </script>
