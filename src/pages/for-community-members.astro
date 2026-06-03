@@ -1,0 +1,425 @@
+---
+import PageLayout    from '../layouts/PageLayout.astro';
+import Testimonial   from '../components/Testimonial.astro';
+import { communityVolunteerUrl, internUrl, testimonials } from '../config';
+
+const internTasks = [
+  'Client intake completion at courthouses for Protection from Abuse and family law initiatives',
+  'Creation of educational materials about legal services',
+  'Online and telephone intake assistance',
+  'Data management projects',
+  'Social media and website support',
+  'Remote consultation meeting facilitation',
+];
+
+const roles = [
+  {
+    title: 'Client Intake Interviewers',
+    desc: 'Connect with those submitting requests for legal help through our online forms to complete an intake interview.',
+  },
+  {
+    title: 'Intake Line Interviewers',
+    desc: 'Serve as the first point of contact for potential clients calling our intake line by conducting interviews and determining eligibility.',
+  },
+  {
+    title: 'Domestic Violence Panel Interviewers',
+    desc: 'Attend the Protection From Abuse docket and assist potential clients by determining their eligibility for assistance that day.',
+  },
+  {
+    title: 'Courthouse Assistance Project Interviewers',
+    desc: 'Interview individuals seeking legal help through our in-court Courthouse Assistance Project for family law matters, held in Lewiston District Court.',
+  },
+  {
+    title: 'Special Projects & Administrative Help',
+    desc: 'Assist with various special projects and administrative tasks, including data entry, website development, social media, trainings, publications, research, and writing.',
+  },
+];
+---
+
+<PageLayout
+  title="For Community Members | Maine Volunteer Lawyers Project"
+  description="Volunteer with the Maine Volunteer Lawyers Project as a community member or student. Learn about intake interviewer roles, special projects, and internships."
+  activePage="For Community"
+>
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="community-hero">
+      <div class="hero-inner">
+        <div class="eyebrow">For Community Members &amp; Students</div>
+        <h1>Your time can change someone's life.</h1>
+        <p class="hero-sub">
+          VLP has a small staff and we depend on the valuable help of our
+          community volunteers, who are essential to fulfilling our mission
+          of expanding access to justice across Maine.
+        </p>
+        <a href={communityVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Apply to Volunteer →
+        </a>
+      </div>
+
+      <Testimonial quote={testimonials.community?.quote} attribution={testimonials.community?.attribution} />
+
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── ROLES ── -->
+    <section class="roles">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Volunteer Opportunities</div>
+          <h2>Ways community members can help</h2>
+          <p class="section-sub">
+            No legal background required for most roles. VLP provides training
+            and support for all volunteer positions.
+          </p>
+        </div>
+
+        <div class="roles-grid">
+          {roles.map(role => (
+            <div class="role-card">
+              <h3>{role.title}</h3>
+              <p>{role.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STUDENTS ── -->
+    <section class="students">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow">For Students</div>
+          <h2>Summer Intern Program</h2>
+          <p class="section-sub-light">
+            VLP's Summer Intern Program gives undergraduate and law students the
+            opportunity to work directly on efforts to improve access to justice
+            in Maine.
+          </p>
+        </div>
+
+        <div class="intern-body">
+
+          <div class="intern-tasks">
+            <h3>What interns do</h3>
+            <ul>
+              {internTasks.map(t => <li>{t}</li>)}
+            </ul>
+          </div>
+
+          <div class="intern-details">
+            <div class="intern-detail-grid">
+              <div class="detail-item">
+                <div class="detail-label">Time commitment</div>
+                <div class="detail-value">10 hours per week</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Duration</div>
+                <div class="detail-value">Late May – late August</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Compensation</div>
+                <div class="detail-value">Unpaid</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Location</div>
+                <div class="detail-value">Primarily remote (courthouse programs in person)</div>
+              </div>
+            </div>
+
+            <div class="intern-timeline">
+              <div class="timeline-label">Application timeline</div>
+              <div class="timeline-item">
+                <span class="timeline-date">Feb 13, 2026</span>
+                <span class="timeline-event">Application deadline (strongly encouraged)</span>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-date">Late Feb 2026</span>
+                <span class="timeline-event">Interviews begin  -  positions filled on a rolling basis</span>
+              </div>
+            </div>
+
+            <a href={internUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+              Apply for Summer 2026 →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW TO APPLY ── -->
+    <section class="apply">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Get Started</div>
+          <h2>How to apply</h2>
+        </div>
+        <div class="apply-steps">
+          <div class="apply-step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h3>Complete the volunteer application</h3>
+              <p>Fill out our online application to tell us about yourself and the roles you're interested in.</p>
+              <a href={communityVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+                Open Application Form →
+              </a>
+            </div>
+          </div>
+          <div class="apply-step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h3>We'll be in touch</h3>
+              <p>A VLP staff member will follow up to discuss available opportunities and next steps.</p>
+            </div>
+          </div>
+          <div class="apply-step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h3>Training &amp; onboarding</h3>
+              <p>VLP provides the training you need to get started. You don't need prior legal experience for most roles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</PageLayout>
+
+<style>
+/* ── HERO ── */
+.community-hero {
+  background: var(--navy);
+  position: relative;
+  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
+  min-height: var(--hero-min-h);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.community-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+}
+.section-header { margin-bottom: 48px; }
+
+/* ── ROLES ── */
+.roles {
+  background: var(--cream);
+  padding: 96px var(--page-padding-x);
+}
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.role-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.role-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.role-card p {
+  font-size: 0.88rem;
+  color: var(--slate);
+  line-height: 1.65;
+}
+
+/* ── STUDENTS ── */
+.students {
+  background: var(--navy);
+  padding: 96px var(--page-padding-x);
+}
+.students .section-header { text-align: left; }
+.students .section-header h2 {
+  color: #fff;
+  margin-top: 14px;
+}
+.students .eyebrow { margin-bottom: 20px; }
+.section-sub-light {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 560px;
+}
+.intern-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.intern-tasks h3,
+.intern-details h3 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 20px;
+}
+.intern-tasks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.intern-tasks li {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+}
+.intern-tasks li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 1px;
+  background: var(--blue);
+}
+.intern-details {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.intern-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.detail-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 18px 20px;
+}
+.detail-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 6px;
+}
+.detail-value {
+  font-size: 0.9rem;
+  color: #fff;
+  line-height: 1.4;
+}
+.intern-timeline {
+  border-left: 2px solid var(--blue);
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.timeline-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 4px;
+}
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.timeline-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+.timeline-event {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ── HOW TO APPLY ── */
+.apply {
+  background: var(--cream);
+  padding: 96px var(--page-padding-x);
+}
+.apply .section-header { text-align: left; }
+.apply .eyebrow-blue { justify-content: flex-start; }
+.apply-steps {
+  max-width: 740px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--light-gray);
+}
+.apply-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 32px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--light-gray);
+  align-items: start;
+}
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--light-gray);
+  line-height: 1;
+  padding-top: 4px;
+  user-select: none;
+}
+.step-body h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.step-body p {
+  font-size: 0.92rem;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.step-body p:last-child { margin-bottom: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .roles-grid { grid-template-columns: repeat(2, 1fr); }
+  .intern-body { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .community-hero { grid-template-columns: 1fr; }
+  .roles,
+  .students,
+  .apply { padding-top: 64px; padding-bottom: 64px; }
+  .roles-grid { grid-template-columns: 1fr; }
+  .intern-detail-grid { grid-template-columns: 1fr; }
+  .apply-step { grid-template-columns: 1fr; gap: 12px; }
+  .step-num { font-size: 1.4rem; }
+}
+</style>

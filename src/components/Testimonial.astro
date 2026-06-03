@@ -1,0 +1,71 @@
+---
+interface Props {
+  quote?: string | null;
+  attribution?: string | null;
+}
+const { quote, attribution } = Astro.props;
+const isPlaceholder = !quote || !attribution;
+---
+
+<div class:list={["hero-testimonial", { "is-placeholder": isPlaceholder }]}>
+  <div class="quote-wrap">
+    <blockquote>
+      {isPlaceholder
+        ? "A quote from a client or volunteer will appear here — ask VLP staff to provide one."
+        : quote}
+    </blockquote>
+    <div class="attribution">
+      <strong>{isPlaceholder ? "Name, Role" : attribution}</strong>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-testimonial {
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-wrap {
+    position: relative;
+    padding-left: 24px;
+  }
+  .quote-wrap::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    line-height: 0.65;
+    color: var(--blue-light);
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: -8px;
+    pointer-events: none;
+  }
+
+  blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-style: italic;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.5;
+    margin: 0 0 28px;
+  }
+  .is-placeholder blockquote {
+    color: rgba(255,255,255,0.25);
+  }
+
+  .attribution strong {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.88);
+  }
+  .is-placeholder .attribution strong {
+    color: rgba(255,255,255,0.25);
+  }
+
+  @media (max-width: 768px) {
+    .hero-testimonial { display: none; }
+  }
+</style>

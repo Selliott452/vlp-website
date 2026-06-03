@@ -1,0 +1,220 @@
+---
+import { siteStats } from '../config';
+---
+
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">Maine's legal aid nonprofit</div>
+    <h1>
+      Justice shouldn't<br />
+      depend on your<br />
+      <em>ability to pay.</em>
+    </h1>
+    <p class="hero-mission">
+      We connect Mainers facing civil legal challenges with dedicated volunteer
+      attorneys, providing expert help to those in need, across every
+      county in the state.
+    </p>
+    <div class="hero-ctas">
+      <a href="/get-help" class="btn-primary">I Need Legal Help →</a>
+      <a href="/for-attorneys" class="btn-outline">Volunteer as Attorney</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stat-block">
+      <h2>{siteStats.clientsServed}</h2>
+      <p>Mainers helped with civil legal matters every year</p>
+    </div>
+    <div class="hero-stats-row">
+      <div class="hero-mini-stat">
+        <h3>{siteStats.countiesServed}</h3>
+        <p>Maine counties served</p>
+      </div>
+      <div class="hero-mini-stat">
+        <h3>{siteStats.yearsServing}</h3>
+        <p>years serving Maine</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 75vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(46,134,193,0.08) 0%, transparent 55%),
+      radial-gradient(circle at 15% 80%, rgba(46,134,193,0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(46,134,193,0.3) 30%,
+      rgba(46,134,193,0.3) 70%,
+      transparent
+    );
+  }
+
+  /* Left column */
+  .hero-left {
+    padding: 56px 64px 56px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--blue);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--blue-light);
+  }
+
+  .hero-mission {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 48px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Right column  -  stats */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 80px 56px 64px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero-stat-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(46,134,193,0.2);
+    border-radius: 6px;
+    padding: 40px;
+    margin-bottom: 24px;
+  }
+  .hero-stat-block h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--blue-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .hero-stat-block p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .hero-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .hero-mini-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 24px 28px;
+  }
+  .hero-mini-stat h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .hero-mini-stat p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero::before { display: none; }
+    .hero-left { padding: 72px 48px 40px; }
+    .hero-right { padding: 0 48px 72px; }
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero::before { display: none; }
+    .hero-left { padding: 48px 20px 32px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-mission { font-size: 0.95rem; }
+    .hero-ctas { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-outline { text-align: center; justify-content: center; padding: 16px 24px; }
+
+    .hero-right { padding: 0 20px 48px; }
+    .hero-stat-block { padding: 28px 24px; }
+    .hero-stat-block h2 { font-size: 2.8rem; }
+    .hero-stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .hero-mini-stat { padding: 18px 16px; }
+    .hero-mini-stat h3 { font-size: 1.4rem; }
+  }
+
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.9rem; }
+    .hero-stats-row { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+import { testimonials } from '../config';
+
+const t = testimonials.attorney;
+const isPlaceholder = !t;
+
+
+---
+
+<section class="spotlight">
+  <div class="section-header light">
+    <div class="eyebrow">Why Volunteer</div>
+    <h2>Attorneys Making a Difference</h2>
+  </div>
+
+  <div class="spotlight-grid">
+    <div class:list={["spotlight-quote", { "is-placeholder": isPlaceholder }]}>
+      <blockquote>
+        {isPlaceholder
+          ? "A quote from a volunteer attorney will appear here — ask VLP staff to provide one."
+          : `"${t!.quote}"`}
+      </blockquote>
+      <div class="quote-attribution">
+        <strong>{isPlaceholder ? "Name, Esq." : t!.attribution}</strong>
+      </div>
+    </div>
+
+    <div class="spotlight-cards">
+      <div class="info-card">
+        <h4>CLE Credit Available</h4>
+        <p>
+          Maine Bar Rule 5 now allows attorneys to earn CLE credit for pro bono
+          service through VLP. Ask us for details.
+        </p>
+      </div>
+      <div class="info-card">
+        <h4>Flexible Commitment</h4>
+        <p>
+          Volunteer at a pace that works for your practice, one case or many, in the format that best fits you.
+          Every hour of service matters.
+        </p>
+      </div>
+      <div class="info-card">
+        <h4>Full Support</h4>
+        <p>
+          VLP provides case coordination, resources, malpractice coverage, and a community of fellow
+          attorneys committed to equal justice.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .spotlight {
+    background: var(--light-gray);
+    padding: 96px 80px;
+  }
+
+  /* Section header  -  light variant */
+  .section-header.light { text-align: center; margin-bottom: 64px; }
+  .section-header.light .eyebrow { color: var(--blue); }
+  .section-header.light h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+
+  .spotlight-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* Quote */
+  .spotlight-quote { position: relative; }
+  .spotlight-quote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    line-height: 0.7;
+    color: var(--blue);
+    opacity: 0.2;
+    position: absolute;
+    top: 0; left: -16px;
+  }
+
+  blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.45;
+    padding-left: 20px;
+    margin-bottom: 32px;
+  }
+  .is-placeholder blockquote { color: var(--slate); opacity: 0.45; }
+
+  .quote-attribution {
+    padding-left: 20px;
+  }
+  .quote-attribution strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* Info cards */
+  .spotlight-cards { display: flex; flex-direction: column; gap: 16px; }
+  .info-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 24px 28px;
+    border-left: 3px solid var(--blue);
+  }
+  .info-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .info-card p {
+    font-size: 0.875rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .spotlight { padding: 72px 48px; }
+  }
+
+  @media (max-width: 768px) {
+    .spotlight { padding: 56px 20px; }
+    .spotlight-grid { grid-template-columns: 1fr; gap: 40px; }
+    blockquote { font-size: 1.2rem; }
+    .spotlight-quote::before { font-size: 5rem; }
+  }
+</style>

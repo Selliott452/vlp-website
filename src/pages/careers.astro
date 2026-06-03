@@ -1,0 +1,486 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { careersApplyUrl } from '../config';
+
+const benefits = [
+  { label: 'PTO',                 detail: '200 hours of PTO annual accrual from start date' },
+  { label: 'Paid holidays',       detail: 'Paid holidays throughout the year' },
+  { label: 'Health insurance',    detail: '100% employer-paid individual health, dental, and vision insurance' },
+  { label: 'Life & disability',   detail: 'Employer-paid life and disability insurance' },
+  { label: 'Retirement',          detail: 'Retirement plan with up to 3% employer match' },
+  { label: 'Wellness & growth',   detail: 'Wellness benefit, EAP, and professional development support' },
+];
+
+const responsibilities = [
+  {
+    area: 'Clinic Coordination',
+    bullets: [
+      'Coordinate and support remote and in-person legal clinics.',
+      'Manage scheduling, logistics, and day-of operations.',
+      'Maintain clinic workflows and systems to ensure quality and consistency.',
+    ],
+  },
+  {
+    area: 'Client Support',
+    bullets: [
+      'Schedule appointments and prepare clients for clinics.',
+      'Serve as a primary point of contact for clinic participation and referral status.',
+      'Follow up with clients to support next steps.',
+    ],
+  },
+  {
+    area: 'Volunteer Attorney Support',
+    bullets: [
+      'Coordinate scheduling and communication with volunteer attorneys.',
+      'Support recruitment, onboarding, and retention of pro bono volunteers.',
+      'Ensure attorneys have necessary case information and system access.',
+    ],
+  },
+  {
+    area: 'Pro Bono Referrals',
+    bullets: [
+      'Administer referral programs, including extended representation.',
+      'Track case status and follow up with volunteer attorneys.',
+      'Support appropriate case placement in coordination with staff attorneys.',
+    ],
+  },
+  {
+    area: 'Data & Case Management',
+    bullets: [
+      'Maintain accurate records in VLP\'s case management system.',
+      'Monitor case progress and ensure timely updates and closures.',
+    ],
+  },
+  {
+    area: 'Organizational Collaboration',
+    bullets: [
+      'Work closely with staff across intake, legal, and operations teams.',
+      'Support partnerships with courts and community organizations.',
+      'Support VLP\'s Community Justice Workers Pilot.',
+      'Assist with the Justice Andrew Mead Pro Bono Fellowship Program.',
+      'Assist with trainings, events, and general program support as needed.',
+    ],
+  },
+];
+
+const expectations = [
+  'Maintain confidentiality and professionalism at all times.',
+  'Work independently with strong follow-through and accountability.',
+  'Communicate clearly and proactively with clients, attorneys, and staff.',
+  'Contribute to a collaborative, mission-driven team culture.',
+];
+---
+
+<PageLayout
+  title="Careers | Maine Volunteer Lawyers Project"
+  description="Join the Maine Volunteer Lawyers Project. View open positions and learn about working at VLP to expand access to justice across Maine."
+  activePage="Careers"
+>
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="careers-hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Join Our Team</div>
+        <h1>Work that matters.</h1>
+        <p class="hero-sub">
+          At VLP, every role contributes directly to expanding access to
+          justice for Mainers who need it most. We're a small, collaborative
+          team committed to equity, community, and meaningful work.
+        </p>
+      </div>
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── OPEN POSITION ── -->
+    <section class="opening">
+      <div class="section-inner">
+
+        <div class="opening-header">
+          <div class="eyebrow-blue">Now Hiring</div>
+          <h2>Justice Referral Advocate</h2>
+          <div class="opening-meta">
+            <span class="meta-tag">Full-time</span>
+            <span class="meta-tag">Exempt</span>
+            <span class="meta-tag">Statewide / Hybrid</span>
+            <span class="meta-tag geo">Geographic preference: Northern Maine</span>
+          </div>
+          <div class="salary-range">
+            $57,000 – $62,000
+            <span class="salary-note">Higher compensation available for candidates with a JD or attorney licensure</span>
+          </div>
+        </div>
+
+        <div class="opening-body">
+          <div class="posting-content">
+
+            <div class="posting-section">
+              <h3>About VLP</h3>
+              <p>
+                The Maine Volunteer Lawyers Project (VLP) is a statewide
+                nonprofit that expands access to justice by connecting
+                low-income Mainers with pro bono civil legal services. We
+                partner with volunteer attorneys, courts, and community
+                organizations to deliver high-quality, client-centered legal
+                assistance.
+              </p>
+            </div>
+
+            <div class="posting-section">
+              <h3>Position Overview</h3>
+              <p>
+                The Justice Referral Advocate is a key operational and
+                client-facing role supporting VLP's clinics and pro bono
+                referral programs. This position ensures that clinics run
+                smoothly, referrals progress efficiently, and both clients
+                and volunteer attorneys are well supported.
+              </p>
+              <p>
+                This is a hybrid, high-responsibility role that combines
+                clinic coordination, case and referral management, and
+                client communication. The ideal candidate is organized,
+                collaborative, and exercises strong judgment in handling
+                sensitive information.
+              </p>
+              <p>
+                VLP has a preference for candidates located in or connected
+                to Northern Maine, though applicants statewide are encouraged
+                to apply.
+              </p>
+            </div>
+
+            <div class="posting-section">
+              <h3>Key Responsibilities</h3>
+              <div class="resp-grid">
+                {responsibilities.map(r => (
+                  <div class="resp-card">
+                    <div class="resp-area">{r.area}</div>
+                    <ul>
+                      {r.bullets.map(b => <li>{b}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="posting-section">
+              <h3>Expectations</h3>
+              <ul class="expectations-list">
+                {expectations.map(e => <li>{e}</li>)}
+              </ul>
+            </div>
+
+            <div class="posting-section">
+              <h3>Work Schedule &amp; Location</h3>
+              <ul class="expectations-list">
+                <li>Full-time, exempt position.</li>
+                <li>Hybrid with regular in-person work and some in-state travel.</li>
+                <li>Occasional evening hours for clinic support.</li>
+                <li>Reliable internet and a confidential remote workspace required.</li>
+              </ul>
+            </div>
+
+            <div class="posting-section">
+              <h3>Supervision</h3>
+              <p>Reports to the Managing Attorney.</p>
+            </div>
+
+          </div>
+
+          <div class="apply-box">
+            <h3>How to Apply</h3>
+            <p>
+              Submit your application through our online form. Questions about
+              the position can be directed to
+              <a href="mailto:contact@vlp.org">contact@vlp.org</a>.
+            </p>
+            <a href={careersApplyUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+              Apply Now →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── BENEFITS ── -->
+    <section class="benefits">
+      <div class="section-inner">
+        <div class="section-header light">
+          <div class="eyebrow">Benefits</div>
+          <h2>What we offer</h2>
+        </div>
+        <div class="benefits-grid">
+          {benefits.map(b => (
+            <div class="benefit-card">
+              <div class="benefit-label">{b.label}</div>
+              <p>{b.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EOE ── -->
+    <section class="eoe">
+      <div class="section-inner eoe-inner">
+        <div>
+          <div class="eyebrow-blue">Equal Opportunity Employer</div>
+          <h2>We welcome diverse backgrounds.</h2>
+          <p>
+            VLP is committed to building a team that reflects the communities
+            we serve. We welcome applicants of all backgrounds and perspectives
+            in service of justice and equity.
+          </p>
+        </div>
+        <div class="eoe-actions">
+          <a href={careersApplyUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">Apply Now →</a>
+          <a href="mailto:contact@vlp.org" class="contact-link">or email contact@vlp.org</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</PageLayout>
+
+<style>
+/* ── HERO ── */
+.careers-hero {
+  background: var(--navy);
+  position: relative;
+  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
+  overflow: hidden;
+}
+.hero-inner { max-width: 640px; }
+.careers-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.section-header { margin-bottom: 48px; }
+
+/* ── OPENING ── */
+.opening {
+  background: var(--cream);
+  padding: 96px var(--page-padding-x);
+}
+.opening-header {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--light-gray);
+}
+.opening-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin: 16px 0 20px;
+}
+.opening-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.meta-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--light-gray);
+  color: var(--navy);
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+.meta-tag.geo {
+  background: rgba(46,134,193,0.1);
+  color: var(--blue);
+}
+.salary-range {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.salary-note {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--slate);
+  font-style: italic;
+}
+.opening-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: start;
+}
+.posting-content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.posting-section h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--light-gray);
+}
+.posting-section p {
+  font-size: 0.92rem;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.posting-section p:last-child { margin-bottom: 0; }
+.resp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.resp-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 24px;
+}
+.resp-area {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+.resp-card ul,
+.expectations-list {
+  padding-left: 18px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.resp-card li,
+.expectations-list li {
+  font-size: 0.88rem;
+  color: var(--slate);
+  line-height: 1.6;
+}
+.apply-box {
+  background: var(--navy);
+  border-radius: 6px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 80px;
+}
+.apply-box h3 { color: #fff; margin-bottom: 0; font-size: 1.05rem; font-weight: 700; }
+.apply-box p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+}
+.apply-box a[href^="mailto"] {
+  color: var(--blue-light);
+  text-decoration: none;
+}
+.apply-box a[href^="mailto"]:hover { text-decoration: underline; }
+
+/* ── BENEFITS ── */
+.benefits {
+  background: var(--navy);
+  padding: 96px var(--page-padding-x);
+}
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.benefit-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.benefit-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+}
+.benefit-card p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+}
+
+/* ── EOE ── */
+.eoe {
+  background: var(--cream);
+  padding: 72px var(--page-padding-x);
+}
+.eoe-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.eoe-inner h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin: 12px 0 16px;
+}
+.eoe-inner p {
+  font-size: 0.95rem;
+  color: var(--slate);
+  line-height: 1.7;
+  max-width: 480px;
+}
+.eoe-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.contact-link {
+  font-size: 0.85rem;
+  color: var(--slate);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-link:hover { color: var(--blue); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .opening-body { grid-template-columns: 1fr; }
+  .apply-box { position: static; }
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .opening,
+  .benefits,
+  .eoe { padding-top: 64px; padding-bottom: 64px; }
+  .resp-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .eoe-inner { flex-direction: column; align-items: flex-start; }
+  .eoe-actions { width: 100%; }
+}
+</style>

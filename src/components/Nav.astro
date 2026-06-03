@@ -1,0 +1,265 @@
+---
+// Nav.astro
+// Props let inner pages highlight the active link if needed.
+interface Props {
+  activePage?: string;
+}
+const { activePage = '' } = Astro.props;
+
+const links = [
+  { label: 'I Need Help',   href: '/get-help' },
+  { label: 'For Attorneys', href: '/for-attorneys'                      },
+  { label: 'For Community', href: '/for-community-members'             },
+  { label: 'About',         href: '/about-vlp'                         },
+  { label: 'Careers',       href: '/careers'                           },
+  { label: 'Contact',       href: '/contact'                        },
+];
+---
+
+<nav>
+  <a href="/" class="nav-logo" aria-label="Maine Volunteer Lawyers Project home">
+    <div class="nav-logo-crop">
+      <img src="/vlp-logo.webp" alt="" class="nav-logo-img" />
+    </div>
+    <span class="nav-logo-name">Maine Volunteer Lawyers Project</span>
+  </a>
+
+  <!-- Desktop links -->
+  <ul class="nav-links" role="list">
+    {links.map(link => (
+      <li>
+        <a href={link.href} class={activePage === link.label ? 'active' : ''}>
+          {link.label}
+        </a>
+      </li>
+    ))}
+    <li><a href="/donate" class="nav-donate">Donate</a></li>
+  </ul>
+
+  <!-- Hamburger (mobile only) -->
+  <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Mobile full-screen drawer -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  {links.map(link => (
+    <a href={link.href}>{link.label}</a>
+  ))}
+  <a href="/donate" class="mobile-donate">Donate</a>
+</div>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    box-shadow: 0 2px 16px rgba(27,79,114,0.25);
+  }
+
+  /* Logo */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-crop {
+    height: 38px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .nav-logo-img {
+    height: 54px;
+    width: auto;
+    display: block;
+  }
+  .nav-logo-name {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  /* Desktop links */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--blue-light); }
+
+  .nav-donate {
+    background: var(--blue);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 3px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    transition: background 0.2s;
+  }
+  .nav-donate:hover { background: var(--blue-light); }
+
+  /* Hamburger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.2s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px 40px;
+  }
+  .mobile-nav.open { display: flex; }
+
+  .mobile-nav a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 16px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-nav a:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+  .mobile-nav a:hover { color: var(--blue-light); }
+
+  .mobile-nav .mobile-donate {
+    margin-top: 24px;
+    background: var(--blue);
+    color: #fff;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 18px 0;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  /* Responsive */
+
+  /* Tighten spacing before the hamburger kicks in */
+  @media (max-width: 1100px) {
+    nav { padding: 0 28px; }
+    .nav-links { gap: 18px; }
+  }
+
+  /* Hide logo wordmark to free up room for links */
+  @media (max-width: 960px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 0.8rem; }
+    .nav-logo-name { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    nav { height: 56px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-logo-crop { height: 32px; }
+    .nav-logo-img { height: 46px; }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  function openMenu() {
+    hamburger?.classList.add('open');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    mobileNav?.classList.add('open');
+    mobileNav?.setAttribute('aria-hidden', 'false');
+    // iOS-safe scroll lock
+    document.body.dataset.scrollY = String(window.scrollY);
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${window.scrollY}px`;
+    document.body.style.width = '100%';
+  }
+
+  function closeMenu() {
+    hamburger?.classList.remove('open');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    mobileNav?.classList.remove('open');
+    mobileNav?.setAttribute('aria-hidden', 'true');
+    // Restore scroll position
+    const scrollY = parseInt(document.body.dataset.scrollY ?? '0');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
+  }
+
+  hamburger?.addEventListener('click', () => {
+    mobileNav?.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  mobileNav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      closeMenu();
+      if (href?.includes('#')) {
+        e.preventDefault();
+        const anchor = href.split('#')[1];
+        setTimeout(() => {
+          const target = document.getElementById(anchor);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      }
+    });
+  });
+</script>

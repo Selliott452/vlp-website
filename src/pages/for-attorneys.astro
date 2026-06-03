@@ -1,0 +1,577 @@
+---
+import PageLayout    from '../layouts/PageLayout.astro';
+import Testimonial   from '../components/Testimonial.astro';
+import { attorneyVolunteerUrl, testimonials } from '../config';
+
+const benefits = [
+  {
+    title: 'Malpractice Insurance Covered',
+    desc: "VLP provides malpractice coverage for all volunteer work done through our programs. You're fully protected.",
+  },
+  {
+    title: 'Free CLE',
+    desc: 'Complimentary continuing legal education in family law, protection from abuse, small claims, and employment law.',
+  },
+  {
+    title: 'No Minimum Commitment',
+    desc: 'Volunteer as often as your schedule allows. Even once or twice a year makes a real difference to a Maine family.',
+  },
+  {
+    title: 'Training & Mentoring',
+    desc: 'New to a practice area? VLP provides training and connects you with experienced attorneys who can guide you.',
+  },
+  {
+    title: 'VLP Handles the Rest',
+    desc: 'Our staff manages client intake, eligibility screening, interpreter services, and court cost reimbursement.',
+  },
+  {
+    title: 'Flexible Formats',
+    desc: 'Remote, in-person, limited representation, or full representation. Volunteer in the format that works for you.',
+  },
+];
+
+const eligibility = [
+  {
+    who: 'Active Maine Attorneys',
+    detail: 'Any attorney with an active Maine law license.',
+  },
+  {
+    who: 'Retired & Emeritus Attorneys',
+    detail: 'Eligible under Maine Bar Rule 4(f) emeritus status.',
+  },
+  {
+    who: 'Out-of-State Attorneys',
+    detail: 'Licensed in another jurisdiction? You can volunteer under Maine Bar Admission Rule 11C. VLP can assist with the Rule 11C application process.',
+  },
+  {
+    who: 'New Attorneys',
+    detail: 'Less experienced in a practice area? VLP provides the training and mentoring to get you up to speed.',
+  },
+];
+
+const programs = [
+  { name: 'Family Law Helpline',                  desc: 'Brief telephone advice for family law matters.' },
+  { name: 'Courthouse Assistance Project (CHAP)', desc: 'In-person assistance at courthouses for family law cases.' },
+  { name: 'Protection From Abuse Panel',          desc: 'Representation for PFA and domestic violence matters.' },
+  { name: 'Small Claims Clinic',                  desc: 'Help clients navigate small claims court.' },
+  { name: 'Bankruptcy Clinic',                    desc: 'Guidance for clients facing bankruptcy.' },
+  { name: "Workers' Rights Legal Clinic",          desc: 'Employment law assistance for low-income workers.' },
+  { name: 'Maine Homeless Legal Project',         desc: 'Legal help for Mainers experiencing homelessness.' },
+  { name: 'ABA Free Legal Answers Maine',         desc: 'Answer civil legal questions through a secure online portal.' },
+];
+
+const nonClientFacing = [
+  'Lawyer-to-Lawyer referral assistance',
+  'CLE program development and presentation',
+  'Mentoring newer volunteer attorneys',
+  'Drafting client education materials',
+];
+
+const faqs = [
+  {
+    group: 'Pro Bono Service',
+    items: [
+      {
+        q: 'Why is it important for Maine attorneys to provide pro bono legal assistance?',
+        a: 'Maine attorneys help address an acute unmet need for legal assistance. Scores of Mainers who need an attorney cannot afford to hire one, and legal aid cannot serve everyone. Research shows clients achieve better outcomes with legal representation. Volunteering also offers personal rewards including learning new legal areas and connecting with the community.',
+      },
+      {
+        q: 'Who does VLP help?',
+        a: 'VLP serves clients with household incomes up to 200% of the federal poverty level and limited assets. The organization prioritizes helping domestic violence survivors, rural Maine residents, and others facing barriers to legal assistance.',
+      },
+      {
+        q: 'Can I volunteer if I am a retired or inactive attorney?',
+        a: 'Yes. Retired attorneys with emeritus status under Maine Bar Rule 4(f) may volunteer. VLP provides malpractice coverage, and you don\'t need to maintain a law office. Retired volunteers can mentor others, answer questions on Free Legal Answers Maine, and assist with referrals.',
+      },
+      {
+        q: 'Can I volunteer if I am licensed in a jurisdiction other than Maine?',
+        a: 'Yes. Under Maine Bar Admission Rule 11C, attorneys from other states or D.C. in good standing may volunteer with VLP and practice before Maine courts under specific conditions.',
+      },
+      {
+        q: 'What if I don\'t have experience in the area of law covered by your programs?',
+        a: 'VLP provides free continuing legal education programs, mentoring, and support to help volunteers learn relevant areas of law.',
+      },
+      {
+        q: 'Do I need to have my own malpractice insurance?',
+        a: 'No. VLP provides malpractice insurance coverage for attorneys while assisting clients through our programs.',
+      },
+    ],
+  },
+  {
+    group: 'Volunteer Opportunities',
+    items: [
+      {
+        q: 'In what kinds of legal matters can attorneys provide pro bono representation?',
+        a: 'Opportunities include probate, Social Security appeals, unemployment insurance appeals, bankruptcy, family law, property, and miscellaneous civil matters. Volunteers typically conduct initial consultations before accepting cases.',
+      },
+      {
+        q: 'What if I\'m not a litigator or I don\'t want to go to court?',
+        a: 'Multiple non-litigation options exist, including limited representation programs, Free Legal Answers Maine, and non-litigation matters like preparing end-of-life documents.',
+      },
+      {
+        q: 'What is the time commitment? Do I have to volunteer a certain number of hours?',
+        a: 'There is no required time commitment. VLP attorneys choose how frequently they volunteer. Volunteering even once or twice a year helps.',
+      },
+      {
+        q: 'I don\'t have time for full representation cases. Are there other ways to help?',
+        a: 'Yes. Attorneys can participate in virtual clinics (30–45 minute phone or Zoom consultations), courthouse projects, the Free Legal Answers online portal, and lawyer-to-lawyer referral programs.',
+      },
+      {
+        q: 'Are there ways to help VLP that don\'t involve working directly with clients?',
+        a: 'Yes, through lawyer-to-lawyer referrals, mentoring less experienced attorneys, and developing or providing CLE training programs.',
+      },
+    ],
+  },
+  {
+    group: 'How VLP Supports You',
+    items: [
+      {
+        q: 'Am I responsible for paying filing fees and other costs for VLP cases?',
+        a: 'VLP has an expense reimbursement policy. Most clients qualify for fee waivers, and VLP can reimburse attorneys for most non-waivable fees and costs.',
+      },
+      {
+        q: 'Can I receive attorney\'s fees for my work on a VLP matter?',
+        a: 'Volunteer attorneys cannot receive fees from VLP clients, though fees from the opposing party may be available in certain types of matters.',
+      },
+      {
+        q: 'What if I need an interpreter to communicate with a VLP client?',
+        a: 'VLP schedules and pays for interpreters for clinics and helps attorneys obtain interpreter services for full representation cases.',
+      },
+    ],
+  },
+];
+---
+
+<PageLayout
+  title="Volunteer as an Attorney | Maine Volunteer Lawyers Project"
+  description="Maine attorneys: volunteer your expertise with VLP. Free CLE, malpractice coverage, flexible commitment, and meaningful impact for Mainers in need."
+  activePage="For Attorneys"
+>
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="atty-hero">
+      <div class="hero-inner">
+        <div class="eyebrow">For Attorneys</div>
+        <h1>Your expertise can change lives.</h1>
+        <p class="hero-sub">
+          Maine attorneys: volunteer with VLP to provide free civil legal help
+          to neighbors who can't afford representation. Flexible commitment,
+          full malpractice coverage, and free CLE included.
+        </p>
+        <div class="hero-actions">
+          <a href={attorneyVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+            Volunteer Interest Form →
+          </a>
+          <a href="#programs" class="btn-outline">See Programs</a>
+        </div>
+      </div>
+
+      <Testimonial quote={testimonials.attorney?.quote} attribution={testimonials.attorney?.attribution} />
+
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── BENEFITS ── -->
+    <section class="benefits">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Why Volunteer</div>
+          <h2>What VLP offers you</h2>
+          <p class="section-sub">
+            VLP makes it as easy as possible to give back, handling logistics
+            so you can focus on what you do best.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          {benefits.map(b => (
+            <div class="benefit-card">
+              <h3>{b.title}</h3>
+              <p>{b.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROGRAMS ── -->
+    <section class="programs" id="programs">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Clinic Programs</div>
+          <h2>Ways to volunteer</h2>
+          <p class="section-sub">
+            VLP runs eight distinct programs. Choose the format and practice area
+            that fits your schedule and expertise.
+          </p>
+        </div>
+
+        <div class="programs-grid">
+          {programs.map((p, i) => (
+            <div class="program-card">
+              <div class="program-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
+              <div class="program-body">
+                <h3>{p.name}</h3>
+                <p>{p.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Non-client-facing -->
+        <div class="non-client">
+          <h3>Prefer not to work directly with clients?</h3>
+          <p>There are meaningful ways to contribute without direct client representation:</p>
+          <ul>
+            {nonClientFacing.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHO CAN VOLUNTEER ── -->
+    <section class="eligibility">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Who Can Volunteer</div>
+          <h2>You likely are eligible</h2>
+          <p class="section-sub">
+            VLP welcomes attorneys at all stages of their career.
+          </p>
+        </div>
+
+        <div class="elig-grid">
+          {eligibility.map(e => (
+            <div class="elig-card">
+              <h3>{e.who}</h3>
+              <p>{e.detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="elig-cta">
+          <a href={attorneyVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+            Get Started →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FELLOWSHIP ── -->
+    <section class="fellowship">
+      <div class="section-inner">
+        <div class="fellowship-inner">
+          <div class="fellowship-text">
+            <div class="eyebrow">For New Attorneys</div>
+            <h2>Justice Andrew M. Mead Fellowship for Pro Bono Service</h2>
+            <p>
+              Recently admitted to the Maine Bar? The Mead Fellowship offers new attorneys
+              workshops with judiciary members and experienced practitioners, training on
+              Maine court practices and pro bono ethics, hands-on experience with mentorship
+              support, and professional networking, all focused on civil legal matters.
+            </p>
+            <a href={attorneyVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+              Apply via Volunteer Form →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="faq">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Questions &amp; Answers</div>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <div class="faq-groups">
+          {faqs.map(group => (
+            <div class="faq-group">
+              <div class="faq-group-label">{group.group}</div>
+              <div class="faq-list">
+                {group.items.map(item => (
+                  <details class="faq-item">
+                    <summary class="faq-q">
+                      <span>{item.q}</span>
+                      <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </summary>
+                    <p class="faq-a">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+</PageLayout>
+
+<style>
+/* ── HERO ── */
+.atty-hero {
+  background: var(--navy);
+  position: relative;
+  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
+  min-height: var(--hero-min-h);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.atty-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.hero-sub {
+  max-width: 560px;
+  margin-bottom: 48px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── BENEFITS ── */
+.benefits {
+  background: var(--cream);
+  padding: 96px var(--page-padding-x);
+}
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.benefit-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 36px 32px;
+  border-top: 3px solid var(--blue);
+}
+.benefit-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.benefit-card p {
+  font-size: 0.9rem;
+  color: var(--slate);
+  line-height: 1.65;
+}
+
+/* ── ELIGIBILITY ── */
+.eligibility {
+  background: var(--cream);
+  padding: 88px var(--page-padding-x);
+}
+.elig-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+.elig-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 32px;
+  border-top: 3px solid var(--blue);
+}
+.elig-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.elig-card p {
+  font-size: 0.88rem;
+  color: var(--slate);
+  line-height: 1.65;
+}
+.elig-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── PROGRAMS ── */
+.programs {
+  background: var(--navy);
+  padding: 96px var(--page-padding-x);
+}
+.programs .section-header h2 { color: #fff; }
+.programs .eyebrow-blue { color: var(--blue-light); }
+.programs .eyebrow-blue::before { background: var(--blue-light); }
+.programs .section-sub { color: rgba(255,255,255,0.6); }
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.program-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 6px;
+  padding: 28px 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.program-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.15);
+  line-height: 1;
+  flex-shrink: 0;
+  user-select: none;
+}
+.program-body {
+  display: flex;
+  flex-direction: column;
+}
+.program-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.program-card p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+.non-client {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 6px;
+  padding: 36px 40px;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.non-client h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.non-client p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 16px;
+}
+.non-client ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.non-client li {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.non-client li::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  flex-shrink: 0;
+}
+
+/* ── FELLOWSHIP ── */
+.fellowship {
+  background: var(--navy);
+  padding: 96px var(--page-padding-x);
+}
+.fellowship-inner {
+  max-width: 740px;
+  margin: 0 auto;
+}
+.fellowship-text .eyebrow { margin-bottom: 20px; }
+.fellowship-text h2 {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.fellowship-text p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+/* ── FAQ ── */
+.faq {
+  background: var(--light-gray);
+  padding: 96px var(--page-padding-x);
+}
+.faq .section-header h2 { margin-bottom: 0; }
+.faq-groups {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.faq-group-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.faq-group-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--blue);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .atty-hero { grid-template-columns: 1fr; }
+  .benefits,
+  .eligibility,
+  .programs,
+  .fellowship,
+  .faq { padding-top: 64px; padding-bottom: 64px; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .elig-grid { grid-template-columns: 1fr; }
+  .programs-grid { grid-template-columns: 1fr; }
+  .program-card { flex-direction: column; gap: 8px; }
+  .non-client { padding: 28px 24px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .section-header { margin-bottom: 36px; }
+}
+</style>

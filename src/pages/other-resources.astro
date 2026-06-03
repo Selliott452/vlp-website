@@ -1,0 +1,313 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const legalResources = [
+  {
+    name: 'Free Legal Answers',
+    desc: 'Maine Free Legal Answers is a virtual legal advice clinic where qualifying users post civil legal questions at no cost to be answered by pro bono attorneys.',
+    url:  'https://maine.freelegalanswers.org',
+  },
+  {
+    name: 'Self-Help Legal Info',
+    desc: "Pine Tree Legal Assistance's website provides legal forms, links, and self-help information for many kinds of civil legal cases in Maine.",
+    url:  'https://ptla.org/self-help/2654',
+  },
+  {
+    name: 'Maine Courts',
+    desc: "The State of Maine Judicial Branch's mission is to administer justice by providing a safe, accessible, efficient, and impartial system of dispute resolution.",
+    url:  'https://courts.maine.gov',
+  },
+  {
+    name: 'Pine Tree Legal Assistance',
+    desc: 'Pine Tree Legal Assistance provides free civil legal advice in cases involving basic human needs, including access to housing, food, income, safety, education, and healthcare.',
+    url:  'https://ptla.org',
+  },
+  {
+    name: 'Legal Services for Maine Elders',
+    desc: 'Legal Services for Maine Elders provides free, quality legal services to Maine\'s socially and economically needy elderly age 60+.',
+    url:  'https://mainelse.org',
+  },
+  {
+    name: 'Disability Rights Maine',
+    desc: 'Legal services for people with disabilities, including information and referrals, individual advocacy, legal representation, education and training, and assistance with self-advocacy.',
+    url:  'https://drme.org',
+  },
+  {
+    name: 'Immigrant Legal Advocacy Project',
+    desc: 'The Maine Immigrant Legal Advocacy Program provides legal assistance for immigrants looking to improve their legal status and advocates for more just and humane laws and policies.',
+    url:  'https://ilapmaine.org',
+  },
+  {
+    name: 'The Clinics at the University of Maine School of Law',
+    desc: 'The Clinics at Maine Law is a small legal aid program where student attorneys represent low-income clients.',
+    url:  'https://mainelaw.maine.edu/public-service/clac',
+  },
+  {
+    name: 'Lawyer Referral Service',
+    desc: "The Maine State Bar Association Lawyer Referral Service helps you find the right lawyer for your specific legal situation. For a $35 fee, you will receive a referral and up to 30 minutes' consult with a qualified, local lawyer.",
+    url:  'https://mainebar.org/page/LawyerReferralService',
+  },
+  {
+    name: 'ACLU of Maine',
+    desc: "The ACLU of Maine's priorities include criminal justice reform, reproductive freedom, racial justice, immigrants' rights, LGBTQ rights, women's rights, voting rights, freedom of expression, freedom of speech and religion, and privacy.",
+    url:  'https://aclumaine.org',
+  },
+  {
+    name: 'Kids Legal',
+    desc: "Kids Legal is a project of Pine Tree Legal Assistance that provides free legal assistance to Maine's children and their caretakers, specializing in issues surrounding schools, courts, LGBTQ+, runaways, and lead paint at home.",
+    url:  'https://kidslegal.org',
+  },
+  {
+    name: 'Maine Commission on Public Defense Services',
+    desc: 'The Maine Commission on Public Defense Services was established to provide high-quality representation to Maine citizens entitled to counsel at state expense.',
+    url:  'https://maine.gov/pds',
+  },
+];
+
+const communityResources = [
+  {
+    name: 'Maine Coalition to End Domestic Violence (MCEDV)',
+    desc: 'MCEDV serves a network of nine members throughout the state, helping them do the very best work they can for survivors of abuse.',
+    url:  'https://mcedv.org',
+  },
+  {
+    name: 'Maine Coalition Against Sexual Assault (MECASA)',
+    desc: 'MECASA is organized to end sexual violence and to support high-quality sexual violence prevention and response in Maine communities.',
+    url:  'https://mecasa.org',
+  },
+  {
+    name: 'Maine Immigrant Rights Coalition',
+    desc: 'The Maine Immigrant Rights Coalition represents diverse ethnic communities across Maine and works to create and support programs and policies that promote immigrant inclusion and integration.',
+    url:  'https://maineimmigrantrights.org',
+  },
+  {
+    name: 'The Maine Department of Labor',
+    desc: 'The Maine Department of Labor is committed to serving Maine workers and businesses and ensuring safe and fair workplaces for people on the job.',
+    url:  'https://maine.gov/labor',
+  },
+  {
+    name: 'Equality Maine',
+    desc: 'Equality Maine works to secure full equality for the LGBTQ+ community through educational programs and advocacy work to provide resources and support.',
+    url:  'https://equalitymaine.org',
+  },
+  {
+    name: "Southern Maine Workers' Center",
+    desc: "Southern Maine Workers' Center works to improve the lives, working conditions, and terms of employment for working class and low-income people in the state of Maine.",
+    url:  'https://maineworkers.org',
+  },
+  {
+    name: '211 Maine',
+    desc: '211 Maine is a free and confidential service that provides support for a number of human services. Find services in your area by dialing 211 or texting your zip code to 898-211.',
+    url:  'https://211maine.org',
+  },
+  {
+    name: 'The National Alliance for Mental Illness Maine (NAMI Maine)',
+    desc: 'Through support, education, and advocacy NAMI Maine is dedicated to building better lives for Mainers affected by mental illness.',
+    url:  'https://namimaine.org',
+  },
+  {
+    name: 'The Maine Child Welfare Services Ombudsman',
+    desc: "The Maine Child Welfare Services Ombudsman is an impartial office that specializes in assisting people with resolving concerns and complaints with Maine's Child Protective Services Department.",
+    url:  'https://cwombudsman.org',
+  },
+];
+---
+
+<PageLayout
+  title="Other Resources | Maine Volunteer Lawyers Project"
+  description="A directory of legal aid organizations, self-help tools, and community resources for Mainers seeking civil legal assistance."
+>
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="resources-hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Other Resources</div>
+        <h1>You have options beyond VLP.</h1>
+        <p class="hero-sub">
+          VLP is one part of Maine's civil legal aid network. The organizations
+          below offer free and low-cost legal help, self-help tools, and
+          community support for a wide range of needs.
+        </p>
+      </div>
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── LEGAL RESOURCES ── -->
+    <section class="resource-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Legal Aid &amp; Self-Help</div>
+          <h2>Helpful guides &amp; legal organizations</h2>
+        </div>
+        <div class="resource-grid">
+          {legalResources.map(r => (
+            <a href={r.url} class="resource-card" target="_blank" rel="noopener noreferrer">
+              <div class="resource-name">{r.name}</div>
+              <p>{r.desc}</p>
+              <span class="resource-link">{r.url.replace(/^https?:\/\//, '')} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COMMUNITY RESOURCES ── -->
+    <section class="resource-section alt">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Community Support</div>
+          <h2>Other legal help &amp; community resources</h2>
+        </div>
+        <div class="resource-grid">
+          {communityResources.map(r => (
+            <a href={r.url} class="resource-card" target="_blank" rel="noopener noreferrer">
+              <div class="resource-name">{r.name}</div>
+              <p>{r.desc}</p>
+              <span class="resource-link">{r.url.replace(/^https?:\/\//, '')} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta">
+      <div class="section-inner cta-inner">
+        <div>
+          <div class="eyebrow">Still not sure?</div>
+          <h2>VLP can help point you in the right direction.</h2>
+          <p>
+            If you're unsure which organization is right for your situation,
+            reach out to VLP and we'll help you figure it out.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="/contact" class="btn-primary">Contact Us →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</PageLayout>
+
+<style>
+/* ── HERO ── */
+.resources-hero {
+  background: var(--navy);
+  position: relative;
+  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
+
+  overflow: hidden;
+}
+.hero-inner { max-width: 640px; }
+.resources-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+/* page-level section-header overrides: left-aligned, tighter margin, smaller h2 */
+.section-header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+.section-header h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  margin-top: 14px;
+}
+/* ── RESOURCE SECTIONS ── */
+.resource-section {
+  background: var(--cream);
+  padding: 88px var(--page-padding-x);
+}
+.resource-section.alt {
+  background: var(--light-gray);
+}
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.resource-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.resource-section.alt .resource-card {
+  background: #fff;
+}
+.resource-card:hover {
+  border-color: var(--blue-light);
+  box-shadow: 0 4px 16px rgba(46,134,193,0.1);
+}
+.resource-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.resource-card p {
+  font-size: 0.85rem;
+  color: var(--slate);
+  line-height: 1.65;
+  flex: 1;
+}
+.resource-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+/* ── CTA ── */
+.cta {
+  background: var(--navy);
+  padding: 72px var(--page-padding-x);
+}
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.cta .eyebrow { color: var(--blue-light); margin-bottom: 0; }
+.cta .eyebrow::before { background: var(--blue-light); }
+.cta-inner h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 12px 0 16px;
+}
+.cta-inner p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 480px;
+}
+.cta-actions { flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .resource-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .resource-section,
+  .cta { padding-top: 64px; padding-bottom: 64px; }
+  .resource-grid { grid-template-columns: 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+  .cta-actions { width: 100%; }
+}
+</style>

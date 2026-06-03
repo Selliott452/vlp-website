@@ -1,0 +1,118 @@
+---
+// TwoPaths.astro
+// The two primary calls-to-action: residents needing help vs attorney volunteers.
+---
+
+<section class="two-paths">
+  <div class="path path-need" id="need-help">
+    <div class="path-tag">For residents</div>
+    <h2>Do you need civil legal assistance?</h2>
+    <p>
+      If you are facing a civil legal issue (housing, family matters, consumer
+      problems, or more) and can't afford an attorney, VLP may be able to
+      connect you with free help from a volunteer lawyer.
+    </p>
+    <a href="/get-help" class="path-btn">Find legal help →</a>
+  </div>
+
+  <div class="path path-volunteer" id="volunteer">
+    <div class="path-tag">For attorneys</div>
+    <h2>Are you ready to make a difference?</h2>
+    <p>
+      Maine attorneys: your expertise can change lives. Volunteer with VLP to
+      provide pro bono representation, earn CLE credit under Maine Bar Rule 5,
+      and join a community committed to equal access to justice.
+    </p>
+    <a href="/for-attorneys" class="path-btn">Become a volunteer →</a>
+  </div>
+</section>
+
+<style>
+  .two-paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .path {
+    position: relative;
+    padding: 72px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .path-need      { background: var(--cream); }
+  .path-volunteer { background: var(--navy-mid); }
+
+/* Tag */
+  .path-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .path-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+  }
+  .path-need      .path-tag          { color: var(--blue); }
+  .path-need      .path-tag::before  { background: var(--blue); }
+  .path-volunteer .path-tag          { color: var(--blue-light); }
+  .path-volunteer .path-tag::before  { background: var(--blue-light); }
+
+  /* Heading */
+  .path h2 {
+    font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .path-need      h2 { color: var(--navy); }
+  .path-volunteer h2 { color: #fff; }
+
+  /* Body */
+  .path p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 380px;
+  }
+  .path-need      p { color: var(--slate); }
+  .path-volunteer p { color: rgba(255,255,255,0.65); }
+
+  /* CTA button */
+  .path-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 3px;
+    align-self: flex-start;
+    transition: transform 0.15s, background 0.2s;
+  }
+  .path-btn:hover { transform: translateX(4px); }
+  .path-need      .path-btn       { background: var(--navy); color: #fff; }
+  .path-need      .path-btn:hover { background: var(--navy-mid); }
+  .path-volunteer .path-btn       { background: var(--blue); color: #fff; }
+  .path-volunteer .path-btn:hover { background: var(--blue-light); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .two-paths { grid-template-columns: 1fr; }
+    .path { padding: 48px 20px; }
+    .path-number { font-size: 5rem; }
+  }
+</style>

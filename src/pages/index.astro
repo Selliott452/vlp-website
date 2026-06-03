@@ -1,0 +1,25 @@
+---
+import PageLayout  from '../layouts/PageLayout.astro';
+import Hero        from '../components/Hero.astro';
+import TwoPaths    from '../components/TwoPaths.astro';
+import Mission     from '../components/Mission.astro';
+import HowItWorks  from '../components/HowItWorks.astro';
+import Spotlight   from '../components/Spotlight.astro';
+import DonateBand  from '../components/DonateBand.astro';
+import { donateUrl } from '../config';
+---
+
+<PageLayout
+  title="Maine Volunteer Lawyers Project"
+  description="Connecting dedicated volunteer attorneys with Mainers who need free civil legal assistance, ensuring equal access to justice statewide."
+>
+  <main>
+    <Hero />
+    <TwoPaths />
+    <div class="section-divider"></div>
+    <Mission />
+    <HowItWorks />
+    <Spotlight />
+    <DonateBand {donateUrl} />
+  </main>
+</PageLayout>

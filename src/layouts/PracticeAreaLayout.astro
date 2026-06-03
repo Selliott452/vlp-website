@@ -1,0 +1,251 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import QuickExit  from '../components/QuickExit.astro';
+import Nav        from '../components/Nav.astro';
+import Footer     from '../components/Footer.astro';
+import { intakeUrl } from '../config';
+
+interface Props {
+  title:       string;
+  description: string;
+  heading:     string;
+  intro:       string;
+  ctaHeading:  string;
+  ctaText:     string;
+  safetyBanner?:    boolean;
+  ctaIntakeButton?: boolean; // false for walk-in-only pages like PFA
+}
+
+const {
+  title,
+  description,
+  heading,
+  intro,
+  ctaHeading,
+  ctaText,
+  safetyBanner    = false,
+  ctaIntakeButton = true,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description}>
+  <QuickExit />
+  <Nav activePage="I Need Help" />
+
+  <main>
+
+    {safetyBanner && (
+      <div class="safety-banner" role="alert">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M10 2L2 17h16L10 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M10 8v4M10 14v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>If you are in immediate danger, call 9-1-1.</strong>
+          For domestic violence support, call <a href="tel:8668344357">866-834-HELP</a>.
+          Deaf or hard of hearing: <a href="tel:8004371220">800-437-1220</a>.
+          Sexual assault helpline: <a href="tel:8008717741">800-871-7741</a>.
+        </div>
+      </div>
+    )}
+
+    <!-- ── HERO ── -->
+    <section class="page-hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Areas of Practice</div>
+        <h1>{heading}</h1>
+        <p class="hero-sub">{intro}</p>
+      </div>
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── BREADCRUMB ── -->
+    <div class="breadcrumb-bar">
+      <div class="breadcrumb-inner">
+        <a href="/get-help" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to I Need Help
+        </a>
+      </div>
+    </div>
+
+    <!-- ── CONTENT ── -->
+    <section class="content-section">
+      <div class="content-inner">
+
+        <div class="content-body">
+          <slot name="body" />
+        </div>
+
+        <aside class="content-sidebar">
+          {ctaIntakeButton && (
+            <div class="sidebar-card sidebar-card--primary">
+              <h3>Apply for Help</h3>
+              <p>Complete an intake form to request free legal assistance.</p>
+              <a href={intakeUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+                Start Intake Form →
+              </a>
+            </div>
+          )}
+          <slot name="sidebar" />
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ── BOTTOM CTA ── -->
+    <section class="bottom-cta">
+      <div class="bottom-cta-inner">
+        <div>
+          <h2>{ctaHeading}</h2>
+          <p>{ctaText}</p>
+        </div>
+        <div class="cta-actions">
+          {ctaIntakeButton && (
+            <a href={intakeUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+              Start Intake Form →
+            </a>
+          )}
+          <a href="/get-help" class="btn-secondary">
+            ← Back to I Need Help
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ── SAFETY BANNER ── */
+.safety-banner {
+  background: var(--danger);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px var(--page-padding-x);
+  color: #fff;
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+.safety-banner svg { flex-shrink: 0; margin-top: 2px; color: #f4a78a; }
+.safety-banner strong { color: #fff; }
+.safety-banner a { color: #f4a78a; text-decoration: underline; }
+
+/* ── HERO ── */
+.page-hero {
+  background: var(--navy);
+  position: relative;
+  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
+  min-height: var(--hero-min-h);
+  overflow: hidden;
+}
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 100% 0%, rgba(46,134,193,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 0% 100%, rgba(93,173,226,0.07) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 700px; }
+.page-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb-bar {
+  background: var(--cream);
+  border-bottom: 1px solid var(--light-gray);
+  padding: 14px var(--page-padding-x);
+}
+.breadcrumb-inner { max-width: 1100px; margin: 0 auto; }
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--navy); }
+
+/* ── CONTENT ── */
+.content-section {
+  background: var(--cream);
+  padding: 64px var(--page-padding-x) 88px;
+}
+.content-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── SIDEBAR ── */
+.content-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 32px;
+}
+
+/* ── BOTTOM CTA ── */
+.bottom-cta {
+  background: var(--navy);
+  padding: 72px var(--page-padding-x);
+}
+.bottom-cta-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.bottom-cta h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.bottom-cta p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 480px;
+}
+.cta-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .safety-banner { padding-top: 14px; padding-bottom: 14px; }
+  .breadcrumb-bar { padding-top: 12px; padding-bottom: 12px; }
+  .content-section { padding-top: 48px; padding-bottom: 64px; }
+  .content-inner { grid-template-columns: 1fr; gap: 40px; }
+  .content-sidebar { position: static; }
+  .bottom-cta { padding-top: 56px; padding-bottom: 56px; }
+  .bottom-cta-inner { flex-direction: column; align-items: flex-start; }
+  .cta-actions { width: 100%; }
+}
+</style>

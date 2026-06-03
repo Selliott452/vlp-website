@@ -1,0 +1,78 @@
+---
+// DonateBand.astro
+// donateUrl: replace with your actual donation platform link
+//   (e.g. Givebutter, PayPal Giving Fund, or a /donate page)
+interface Props {
+  donateUrl?: string;
+}
+const { donateUrl = '#' } = Astro.props;
+---
+
+<section class="donate-band" id="donate">
+  <div class="donate-band-text">
+    <h2>Support equal justice in Maine.</h2>
+    <p>
+      Your gift funds case coordination, outreach, and infrastructure that
+      makes pro bono legal help possible for Mainers in need.
+    </p>
+  </div>
+  <a href={donateUrl} class="btn-dark">Donate to VLP →</a>
+</section>
+
+<style>
+  .donate-band {
+    background: var(--blue);
+    padding: 64px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .donate-band-text h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .donate-band-text p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--navy);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-dark:hover { background: var(--light-gray); transform: translateY(-1px); }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .donate-band { padding: 56px 48px; }
+  }
+
+  @media (max-width: 768px) {
+    .donate-band {
+      flex-direction: column;
+      text-align: center;
+      padding: 48px 20px;
+      gap: 28px;
+    }
+    .btn-dark { width: 100%; justify-content: center; }
+  }
+</style>

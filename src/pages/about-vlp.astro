@@ -1,0 +1,514 @@
+---
+import PageLayout  from '../layouts/PageLayout.astro';
+import DonateBand  from '../components/DonateBand.astro';
+import { donateUrl } from '../config';
+
+const staff = [
+  { name: 'Nell Brimmer, Esq.',      title: 'Executive Director' },
+  { name: 'Mandi LaBelle, Esq.',     title: 'Managing Attorney' },
+  { name: 'Teresa Farley, Esq.',     title: 'Staff Attorney' },
+  { name: 'Jessica Payson, Esq.',    title: 'Staff Attorney' },
+  { name: 'Charlie Gauvin',          title: 'Intake Paralegal' },
+  { name: 'Carolyn Graney, LMSW',   title: 'Intake & Community Volunteer Manager' },
+  { name: 'Judith Sedgewick',        title: 'Intake & Clinic Coordinator' },
+  { name: 'Serena Sen',              title: 'Clinic & FLAME Coordinator' },
+  { name: 'Eva Sherman',             title: 'Operations Coordinator' },
+  { name: 'Samantha Dickson',        title: 'Justice Referral Coordinator, Southern Maine' },
+  { name: 'Kat Monterosso',          title: 'Justice Referral Coordinator, Northern Maine' },
+];
+
+const board = [
+  { name: 'Beth Richardson',    role: 'President'      },
+  { name: 'Keith Richard',      role: 'Vice President' },
+  { name: 'David Sherman',      role: 'Secretary'      },
+  { name: 'David McConnell',    role: 'Treasurer'      },
+  { name: 'Cheryl Ayer',        role: 'Board Member'   },
+  { name: 'Vanessa Bean',       role: 'Board Member'   },
+  { name: 'Jared des Rosiers',  role: 'Board Member'   },
+  { name: 'Martha Gaythwaite',  role: 'Board Member'   },
+  { name: 'Zach Griffith',      role: 'Board Member'   },
+  { name: 'Barrett Littlefield',role: 'Board Member'   },
+  { name: 'Sandra Livingston',  role: 'Board Member'   },
+  { name: 'James Monteleone',   role: 'Board Member'   },
+  { name: 'Mariah Reed',        role: 'Board Member'   },
+];
+
+const funders = [
+  'Maine Justice Foundation',
+  'Maine Civil Legal Services Fund',
+  'Campaign for Justice',
+  'Individual Contributions',
+];
+---
+
+<PageLayout
+  title="About VLP | Maine Volunteer Lawyers Project"
+  description="Learn about the Maine Volunteer Lawyers Project  -  our mission, history, staff, and the funders who make equal access to justice possible."
+  activePage="About"
+>
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="about-hero">
+      <div class="hero-inner">
+        <div class="eyebrow">About VLP</div>
+        <h1>Equal access to justice for every Mainer.</h1>
+        <p class="hero-sub">
+          Our vision: all Mainers in need of civil legal assistance will be able
+          to access expert, timely help, regardless of their ability to pay.
+        </p>
+      </div>
+
+      <div class="hero-photo-placeholder">
+        <div class="photo-icon" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="18" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M6 42c0-9.9 8.1-18 18-18s18 8.1 18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="photo-label">Staff photo</p>
+        <p class="photo-hint">800×600px recommended</p>
+      </div>
+
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── MISSION + STORY ── -->
+    <section class="story">
+      <div class="section-inner story-grid">
+        <div class="story-text">
+          <div class="eyebrow-blue">Our Mission</div>
+          <h2>Connecting expertise with need</h2>
+          <p>
+            The Maine Volunteer Lawyers Project connects volunteer attorneys with
+            low-income Mainers who need civil legal assistance, ensuring that access
+            to justice is not determined by ability to pay.
+          </p>
+          <p>
+            Founded in 1983 through a partnership between Pine Tree Legal Assistance
+            and the Maine Justice Foundation, VLP operated within PTLA for 35 years
+            before becoming an independent nonprofit in 2017. Today we serve
+            individuals across all sixteen Maine counties, from legal advice to
+            full court representation.
+          </p>
+        </div>
+        <div class="story-stats">
+          <div class="stat-card">
+            <div class="stat-num">2,000+</div>
+            <div class="stat-label">individuals served annually</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">16</div>
+            <div class="stat-label">Maine counties served</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">40+</div>
+            <div class="stat-label">years of equal justice</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHO WE SERVE ── -->
+    <section class="who-we-serve">
+      <div class="section-inner">
+        <div class="section-header light">
+          <div class="eyebrow">Who We Serve</div>
+          <h2>Mainers who need us most</h2>
+        </div>
+        <div class="serve-grid">
+          <div class="serve-card">
+            <h3>Low-Income Residents</h3>
+            <p>
+              We serve households at or below 200% of the federal poverty level
+              across all of Maine's 16 counties, from Portland to Presque Isle.
+            </p>
+          </div>
+          <div class="serve-card">
+            <h3>Domestic Violence Survivors</h3>
+            <p>
+              A significant portion of VLP's clients are domestic violence
+              survivors. We prioritize their cases and connect them with
+              attorneys experienced in protective orders and family law.
+            </p>
+          </div>
+          <div class="serve-card">
+            <h3>Rural Mainers</h3>
+            <p>
+              Legal help is often hardest to find in rural Maine. VLP's
+              statewide volunteer network ensures no county is left without
+              access to civil legal assistance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STAFF ── -->
+    <section class="staff">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Our Team</div>
+          <h2>The people behind VLP</h2>
+        </div>
+        <div class="staff-grid">
+          {staff.map(s => (
+            <div class="staff-card">
+              <div class="staff-avatar" aria-hidden="true">
+                {s.name.split(' ')[0][0]}{s.name.split(' ')[1]?.[0] ?? ''}
+              </div>
+              <h3>{s.name}</h3>
+              <p>{s.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BOARD ── -->
+    <section class="board">
+      <div class="section-inner">
+        <div class="section-header light">
+          <div class="eyebrow">Governance</div>
+          <h2>Board of Directors</h2>
+        </div>
+        <div class="board-grid">
+          {board.map(m => (
+            <div class="board-card">
+              <div class="board-avatar" aria-hidden="true">
+                {m.name.split(' ')[0][0]}{m.name.split(' ')[1]?.[0] ?? ''}
+              </div>
+              <div class="board-name">{m.name}</div>
+              <div class="board-role">{m.role}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FUNDERS ── -->
+    <section class="funders">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Support</div>
+          <h2>Funded by those who believe in justice</h2>
+          <p class="section-sub">
+            VLP's work is made possible by the generosity of foundations,
+            public funds, and individual donors across Maine.
+          </p>
+        </div>
+        <div class="funders-list">
+          {funders.map(f => (
+            <div class="funder-item">{f}</div>
+          ))}
+        </div>
+        <div class="funders-cta">
+          <p>Want to support equal access to justice in Maine?</p>
+          <a href={donateUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+            Donate to VLP →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NON-DISCRIMINATION ── -->
+    <section class="nondiscrim">
+      <div class="section-inner">
+        <p>
+          VLP serves all persons without regard to race, color, national origin,
+          religion, sex, sexual orientation, gender identity, age, disability,
+          or veteran status. To report a complaint, contact Nell Brimmer at
+          <a href="mailto:nbrimmer@vlp.org">nbrimmer@vlp.org</a> or
+          75 Pearl Street, Suite 215, Portland, ME 04101.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</PageLayout>
+
+<style>
+/* ── HERO ── */
+.about-hero {
+  background: var(--navy);
+  position: relative;
+  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
+  min-height: var(--hero-min-h);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-photo-placeholder {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  max-height: 340px;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+}
+.photo-icon { color: rgba(255,255,255,0.2); }
+.photo-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.3);
+}
+.photo-hint {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.2);
+}
+.about-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.hero-sub { max-width: 580px; }
+
+/* ── STORY ── */
+.story {
+  background: var(--cream);
+  padding: 96px var(--page-padding-x);
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 80px;
+  align-items: start;
+}
+.story-text h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 24px;
+  margin-top: 16px;
+}
+.story-text p {
+  font-size: 1rem;
+  color: var(--slate);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.story-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-left: 3px solid var(--blue);
+  border-radius: 4px;
+  padding: 24px 28px;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--slate);
+  font-weight: 400;
+}
+
+/* ── WHO WE SERVE ── */
+.who-we-serve {
+  background: var(--navy);
+  padding: 88px var(--page-padding-x);
+}
+.serve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.serve-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 6px;
+  padding: 36px 32px;
+}
+.serve-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.serve-card p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+/* ── STAFF ── */
+.staff {
+  background: var(--cream);
+  padding: 96px var(--page-padding-x);
+}
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.staff-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 32px 24px;
+  text-align: center;
+}
+.staff-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  letter-spacing: 0.02em;
+}
+.staff-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.staff-card p {
+  font-size: 0.82rem;
+  color: var(--slate);
+  line-height: 1.5;
+}
+
+/* ── BOARD ── */
+.board {
+  background: var(--navy);
+  padding: 88px var(--page-padding-x);
+}
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.board-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 6px;
+  padding: 32px 24px;
+  text-align: center;
+}
+.board-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--navy);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  letter-spacing: 0.02em;
+}
+.board-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.board-role {
+  font-size: 0.82rem;
+  color: var(--blue-light);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── FUNDERS ── */
+.funders {
+  background: var(--cream);
+  padding: 88px var(--page-padding-x);
+}
+.funders-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.funder-item {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  padding: 14px 28px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.funders-cta {
+  text-align: center;
+}
+.funders-cta p {
+  font-size: 1rem;
+  color: var(--slate);
+  margin-bottom: 20px;
+}
+
+/* ── NON-DISCRIMINATION ── */
+.nondiscrim {
+  background: var(--light-gray);
+  padding: 32px var(--page-padding-x);
+}
+.nondiscrim p {
+  font-size: 0.82rem;
+  color: var(--slate);
+  text-align: center;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.nondiscrim a { color: var(--blue); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .story-grid { grid-template-columns: 1fr; gap: 48px; }
+  .story-stats { flex-direction: row; }
+  .staff-grid,
+  .board-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .about-hero { grid-template-columns: 1fr; }
+  .hero-photo-placeholder { display: none; }
+  .story,
+  .who-we-serve,
+  .staff,
+  .board,
+  .funders,
+  .nondiscrim { padding-top: 64px; padding-bottom: 64px; }
+  .serve-grid { grid-template-columns: 1fr; }
+  .staff-grid,
+  .board-grid { grid-template-columns: repeat(2, 1fr); }
+  .story-stats { flex-direction: column; }
+  .section-header { margin-bottom: 36px; }
+}
+</style>

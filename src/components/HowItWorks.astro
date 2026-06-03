@@ -1,0 +1,133 @@
+---
+// HowItWorks.astro
+
+const steps = [
+  {
+    num: '1',
+    title: 'You Reach Out',
+    body: 'Contact VLP by our online intake form or by phone. We\'ll ask about your legal issue, and your financial situation to understand your needs.',
+  },
+  {
+    num: '2',
+    title: 'We Match You',
+    body: 'Our team reviews your case and identifies a volunteer attorney with relevant expertise who is available to help.',
+  },
+  {
+    num: '3',
+    title: 'You Get Help',
+    body: 'You\'re connected with a licensed Maine attorney who provides free civil legal assistance tailored to your situation.',
+  },
+];
+---
+
+<section class="how" id="how">
+  <div class="section-header">
+    <div class="eyebrow">The Process</div>
+    <h2>How VLP Works</h2>
+  </div>
+
+  <div class="steps">
+    {steps.map(step => (
+      <div class="step">
+        <div class="step-num" aria-hidden="true">{step.num}</div>
+        <h3>{step.title}</h3>
+        <p>{step.body}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--navy);
+    padding: 96px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .how::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,134,193,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Section header */
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+  }
+
+  /* Steps grid */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+
+  .step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 40px 32px;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .step p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .how { padding: 72px 48px; }
+  }
+
+  @media (max-width: 768px) {
+    .how { padding: 56px 20px; }
+    .section-header { margin-bottom: 40px; }
+    .steps { grid-template-columns: 1fr; gap: 20px; }
+    .steps::before { display: none; }
+    .step { padding: 28px 24px; }
+  }
+</style>

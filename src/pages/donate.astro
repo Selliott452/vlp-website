@@ -1,0 +1,418 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { donateUrl, siteStats } from '../config';
+---
+
+<PageLayout
+  title="Donate | Maine Volunteer Lawyers Project"
+  description="Support equal access to justice in Maine. Your gift to the Maine Volunteer Lawyers Project funds free civil legal help for Mainers in need."
+>
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="donate-hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Support VLP</div>
+        <h1>Help us bring justice within reach.</h1>
+        <p class="hero-sub">
+          VLP is a small, well-established 501(c)(3) nonprofit. Every dollar
+          you give is multiplied roughly three times over through the work of
+          our volunteer attorneys, funding the coordination, outreach, and
+          infrastructure that makes free civil legal help possible across Maine.
+        </p>
+        <a href={donateUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Donate Now →
+        </a>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-stat-block">
+          <div class="hero-stat-num">{siteStats.clientsServed}</div>
+          <div class="hero-stat-label">individuals served annually</div>
+        </div>
+        <div class="hero-stats-row">
+          <div class="hero-mini-stat">
+            <div class="hero-stat-num">{siteStats.countiesServed}</div>
+            <div class="hero-stat-label">Maine counties served</div>
+          </div>
+          <div class="hero-mini-stat">
+            <div class="hero-stat-num">{siteStats.yearsServing}</div>
+            <div class="hero-stat-label">years serving Maine</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── IMPACT ── -->
+    <section class="impact">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow-blue">Your impact</div>
+          <h2>What your gift makes possible</h2>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <div class="impact-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 3C8 3 3 8 3 14s5 11 11 11 11-5 11-11S20 3 14 3z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M14 8v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Staff coordination</h3>
+            <p>Funds the intake staff who screen cases, match clients with attorneys, and guide people through the process from start to finish.</p>
+          </div>
+          <div class="impact-card">
+            <div class="impact-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <rect x="4" y="6" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M4 11h20" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M9 16h4M9 19h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Malpractice coverage</h3>
+            <p>Provides professional liability coverage so volunteer attorneys can represent clients with confidence, at no cost to them.</p>
+          </div>
+          <div class="impact-card">
+            <div class="impact-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M6 22l4-8 4 4 4-6 4 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Statewide outreach</h3>
+            <p>Supports community education and outreach so Mainers across all 16 counties know help is available when they face a legal crisis.</p>
+          </div>
+          <div class="impact-card">
+            <div class="impact-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="10" r="5" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M5 24c0-4.4 4-8 9-8s9 3.6 9 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Attorney training</h3>
+            <p>Funds CLE workshops and practice-area clinics that equip volunteer attorneys to handle the cases Maine's most vulnerable residents bring to VLP.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WAYS TO GIVE ── -->
+    <section class="ways">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="eyebrow">Ways to give</div>
+          <h2>Choose what works for you</h2>
+        </div>
+        <div class="ways-grid">
+
+          <div class="way-card primary-way">
+            <div class="card-badge">Easiest</div>
+            <h3>Give online</h3>
+            <p>Donate securely via PayPal. One-time and recurring gifts accepted.</p>
+            <a href={donateUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+              Donate Online →
+            </a>
+          </div>
+
+          <div class="way-card">
+            <h3>Give by check</h3>
+            <p>Make your check payable to <strong>Maine Volunteer Lawyers Project</strong> and mail to:</p>
+            <address class="mailing-address">
+              Maine Volunteer Lawyers Project<br />
+              75 Pearl St., Suite 215<br />
+              Portland, ME 04101
+            </address>
+          </div>
+
+        </div>
+
+        <!-- Named funds & special giving -->
+        <div class="special-header">
+          <div class="eyebrow">Special giving opportunities</div>
+        </div>
+        <div class="special-grid">
+
+          <div class="way-card">
+            <h3>Juliet C. Holmes-Smith Memorial Fund</h3>
+            <p>
+              Honor the memory of VLP's former Executive Director by supporting
+              legal representation for survivors of domestic violence. Juliet
+              dedicated her career to this work and passed away in 2020.
+            </p>
+            <a href={donateUrl} class="card-link" target="_blank" rel="noopener noreferrer">Give to this fund →</a>
+          </div>
+
+          <div class="way-card">
+            <h3>Campaign for Justice</h3>
+            <p>
+              A collaborative fundraising effort for Maine's legal community,
+              primarily aimed at Maine Bar members. Proceeds support civil legal
+              services across the state, including VLP's work.
+            </p>
+            <a href="https://campaignforjustice.org" class="card-link" target="_blank" rel="noopener noreferrer">Learn more at campaignforjustice.org →</a>
+          </div>
+
+          <div class="way-card">
+            <h3>Bequests, cy-pres &amp; other gifts</h3>
+            <p>
+              You can underwrite specific VLP projects, make a bequest in your
+              estate plan, or direct a cy-pres award to VLP. Contact us to
+              discuss how your gift can make a lasting difference.
+            </p>
+            <a href="mailto:contact@vlp.org" class="card-link">Contact us to learn more →</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── QUESTIONS ── -->
+    <section class="questions">
+      <div class="section-inner questions-inner">
+        <div>
+          <div class="eyebrow">Questions?</div>
+          <h2>We'd love to hear from you.</h2>
+          <p>
+            For questions about your donation, gift acknowledgment letters, or
+            giving opportunities, please reach out to us directly.
+          </p>
+        </div>
+        <div class="questions-actions">
+          <a href="mailto:contact@vlp.org" class="btn-primary">Email contact@vlp.org →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</PageLayout>
+
+<style>
+/* ── HERO ── */
+.donate-hero {
+  background: var(--navy);
+  position: relative;
+  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
+  min-height: var(--hero-min-h);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.hero-right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hero-stat-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(46,134,193,0.2);
+  border-radius: 6px;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.hero-mini-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--blue-light);
+  line-height: 1;
+}
+.hero-stat-block .hero-stat-num { font-size: 2.8rem; }
+.hero-mini-stat .hero-stat-num  { font-size: 1.8rem; }
+.hero-stat-label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+}
+.donate-hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+}
+.section-header { margin-bottom: 48px; }
+
+/* ── IMPACT ── */
+.impact {
+  background: var(--cream);
+  padding: 96px var(--page-padding-x);
+}
+.impact .section-header h2 { color: var(--navy); }
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.impact-card {
+  background: #fff;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.impact-icon {
+  color: var(--blue);
+  width: 48px;
+  height: 48px;
+  background: rgba(46,134,193,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.impact-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.impact-card p {
+  font-size: 0.92rem;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+/* ── WAYS TO GIVE ── */
+.ways {
+  background: var(--navy);
+  padding: 96px var(--page-padding-x);
+}
+.ways .section-header h2 { color: #fff; }
+.ways .eyebrow { color: var(--blue-light); }
+.ways .eyebrow::before { background: var(--blue-light); }
+.ways-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.way-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.primary-way {
+  border-color: var(--blue);
+  border-top: 3px solid var(--blue);
+  background: rgba(46,134,193,0.08);
+}
+.way-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+.way-card p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  flex: 1;
+}
+.way-card strong { color: rgba(255,255,255,0.85); }
+.mailing-address {
+  font-style: normal;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  border-left: 2px solid var(--blue);
+  padding-left: 16px;
+}
+
+/* Special giving */
+.special-header {
+  margin-top: 56px;
+  margin-bottom: 24px;
+}
+.special-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+.card-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--blue-light);
+  text-decoration: none;
+  transition: color 0.2s;
+  margin-top: auto;
+}
+.card-link:hover { color: #fff; }
+
+/* ── QUESTIONS ── */
+.questions {
+  background: var(--cream);
+  padding: 72px var(--page-padding-x);
+}
+.questions-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.questions .eyebrow { margin-bottom: 0; }
+.questions-inner h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 16px;
+  margin-top: 12px;
+}
+.questions-inner p {
+  font-size: 0.95rem;
+  color: var(--slate);
+  line-height: 1.7;
+  max-width: 480px;
+}
+.questions-actions {
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .ways-grid,
+  .special-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .donate-hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .impact,
+  .ways,
+  .questions { padding-top: 64px; padding-bottom: 64px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .questions-inner { flex-direction: column; align-items: flex-start; }
+  .questions-actions { width: 100%; }
+  .questions-actions .btn-primary { display: block; text-align: center; }
+}
+</style>

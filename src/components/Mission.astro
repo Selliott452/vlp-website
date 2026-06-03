@@ -1,0 +1,122 @@
+---
+// Mission.astro
+---
+
+<section class="mission" id="about">
+  <div class="mission-inner">
+  <div class="mission-label">Our Mission</div>
+
+  <div class="mission-content">
+    <h2>Equal access to justice, for every Mainer, in every county.</h2>
+    <p>
+      At the Maine Volunteer Lawyers Project, we believe that your ZIP code or
+      income should never determine whether you can access expert legal help.
+      Civil legal problems like evictions, custody disputes, and debt collection can
+      derail lives when faced without representation.
+    </p>
+    <p>
+      VLP bridges that gap by building a robust network of dedicated volunteer
+      attorneys, streamlining the referral process, and expanding our reach to
+      those in greatest need across Maine.
+    </p>
+
+    <div class="mission-values">
+      <div class="value-card">
+        <h4>Access</h4>
+        <p>No Maine resident should be turned away from justice due to their ability to pay.</p>
+      </div>
+      <div class="value-card">
+        <h4>Expertise</h4>
+        <p>Every client is matched with a licensed attorney experienced in their area of need.</p>
+      </div>
+      <div class="value-card">
+        <h4>Community</h4>
+        <p>We strengthen Maine's legal community through a culture of pro bono service.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<style>
+  .mission {
+    background: var(--cream);
+    padding: 96px 80px;
+  }
+
+  .mission-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .mission-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .mission-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--blue);
+  }
+
+  .mission-content h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    margin-bottom: 24px;
+  }
+
+  .mission-content p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--slate);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .mission-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .value-card {
+    border-top: 2px solid var(--blue);
+    padding-top: 20px;
+  }
+  .value-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .value-card p {
+    font-size: 0.875rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .mission { padding: 72px 48px; }
+    .mission-values { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .mission { padding: 56px 20px; }
+    .mission-values { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
