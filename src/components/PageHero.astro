@@ -1,9 +1,10 @@
 ---
 // PageHero.astro
-// Shared hero section for all inner pages.
+// Shared hero section used across all pages.
 // - Default slot      → left column (eyebrow, h1, sub, actions)
-// - "right" slot      → right column (testimonial, photo, phone block, etc.)
+// - "right" slot      → right column (testimonial, photo, stats, etc.)
 //   If no right slot is provided the hero renders single-column.
+// - "background" slot → absolutely-positioned overlays (bg patterns, dividers)
 
 interface Props {
   /** Extra CSS classes forwarded to the <section> (rarely needed) */
@@ -15,6 +16,8 @@ const hasRight = Astro.slots.has('right');
 ---
 
 <section class:list={['page-hero', { 'page-hero--two-col': hasRight }, className]}>
+  <slot name="background" />
+
   <div class="hero-inner">
     <slot />
   </div>

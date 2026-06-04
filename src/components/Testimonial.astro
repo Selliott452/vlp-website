@@ -39,8 +39,14 @@ const isPlaceholder = !quote || !attribution;
     opacity: 0.2;
     position: absolute;
     top: 0;
-    left: -8px;
+    left: -32px;
     pointer-events: none;
+    z-index: 0;
+  }
+  .quote-wrap blockquote,
+  .quote-wrap .attribution {
+    position: relative;
+    z-index: 1;
   }
 
   blockquote {
