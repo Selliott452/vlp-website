@@ -46,10 +46,14 @@ const hasRight = Astro.slots.has('right');
     align-items: center;
   }
 
+
   /* Left column content */
   .hero-inner {
     position: relative;
     z-index: 1;
+    border-right: 1px solid rgba(46, 134, 193, 0.35);
+    padding-right: 64px;
+    margin-right: -32px;
   }
   .hero-inner :global(h1) {
     font-size: clamp(2.2rem, 4.5vw, 3.6rem);
@@ -88,6 +92,11 @@ const hasRight = Astro.slots.has('right');
   @media (max-width: 768px) {
     .page-hero--two-col {
       grid-template-columns: 1fr;
+    }
+    .hero-inner {
+      border-right: none;
+      padding-right: 0;
+      margin-right: 0;
     }
   }
 </style>
