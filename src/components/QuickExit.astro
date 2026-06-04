@@ -37,10 +37,12 @@ import { quickExitUrl } from '../config';
 </style>
 
 <script define:vars={{ quickExitUrl }}>
-  const btn = document.getElementById('quick-exit');
-  if (btn) {
-    btn.addEventListener('click', () => {
-      window.location.replace(quickExitUrl);
-    });
-  }
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('quick-exit');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        window.location.replace(quickExitUrl);
+      });
+    }
+  });
 </script>
