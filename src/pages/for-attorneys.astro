@@ -1,5 +1,6 @@
 ---
 import PageLayout    from '../layouts/PageLayout.astro';
+import PageHero      from '../components/PageHero.astro';
 import Testimonial   from '../components/Testimonial.astro';
 import { attorneyVolunteerUrl, testimonials } from '../config';
 
@@ -150,27 +151,23 @@ const faqs = [
   <main>
 
     <!-- ── HERO ── -->
-    <section class="atty-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">For Attorneys</div>
-        <h1>Your expertise can change lives.</h1>
-        <p class="hero-sub">
-          Maine attorneys: volunteer with VLP to provide free civil legal help
-          to neighbors who can't afford representation. Flexible commitment,
-          full malpractice coverage, and free CLE included.
-        </p>
-        <div class="hero-actions">
-          <a href={attorneyVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
-            Volunteer Interest Form →
-          </a>
-          <a href="#programs" class="btn-outline">See Programs</a>
-        </div>
+    <PageHero>
+      <div class="eyebrow">For Attorneys</div>
+      <h1>Your expertise can change lives.</h1>
+      <p class="hero-sub">
+        Maine attorneys: volunteer with VLP to provide free civil legal help
+        to neighbors who can't afford representation. Flexible commitment,
+        full malpractice coverage, and free CLE included.
+      </p>
+      <div class="hero-actions">
+        <a href={attorneyVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Volunteer Interest Form →
+        </a>
+        <a href="#programs" class="btn-outline">See Programs</a>
       </div>
 
-      <Testimonial quote={testimonials.attorney?.quote} attribution={testimonials.attorney?.attribution} />
-
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+      <Testimonial slot="right" quote={testimonials.attorney?.quote} attribution={testimonials.attorney?.attribution} />
+    </PageHero>
 
     <!-- ── BENEFITS ── -->
     <section class="benefits">
@@ -313,35 +310,6 @@ const faqs = [
 </PageLayout>
 
 <style>
-/* ── HERO ── */
-.atty-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-  min-height: var(--hero-min-h);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-.atty-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
-.hero-sub {
-  max-width: 560px;
-  margin-bottom: 48px;
-}
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
 
 /* ── BENEFITS ── */
 .benefits {
@@ -560,7 +528,6 @@ const faqs = [
 }
 
 @media (max-width: 768px) {
-  .atty-hero { grid-template-columns: 1fr; }
   .benefits,
   .eligibility,
   .programs,

@@ -1,5 +1,6 @@
 ---
 import PageLayout    from '../layouts/PageLayout.astro';
+import PageHero      from '../components/PageHero.astro';
 import Testimonial   from '../components/Testimonial.astro';
 import { communityVolunteerUrl, internUrl, testimonials } from '../config';
 
@@ -44,24 +45,22 @@ const roles = [
   <main>
 
     <!-- ── HERO ── -->
-    <section class="community-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">For Community Members &amp; Students</div>
-        <h1>Your time can change someone's life.</h1>
-        <p class="hero-sub">
-          VLP has a small staff and we depend on the valuable help of our
-          community volunteers, who are essential to fulfilling our mission
-          of expanding access to justice across Maine.
-        </p>
+    <PageHero>
+      <div class="eyebrow">For Community Members &amp; Students</div>
+      <h1>Your time can change someone's life.</h1>
+      <p class="hero-sub">
+        VLP has a small staff and we depend on the valuable help of our
+        community volunteers, who are essential to fulfilling our mission
+        of expanding access to justice across Maine.
+      </p>
+      <div class="hero-actions">
         <a href={communityVolunteerUrl} class="btn-primary" target="_blank" rel="noopener noreferrer">
           Apply to Volunteer →
         </a>
       </div>
 
-      <Testimonial quote={testimonials.community?.quote} attribution={testimonials.community?.attribution} />
-
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+      <Testimonial slot="right" quote={testimonials.community?.quote} attribution={testimonials.community?.attribution} />
+    </PageHero>
 
     <!-- ── ROLES ── -->
     <section class="roles">
@@ -189,30 +188,7 @@ const roles = [
 </PageLayout>
 
 <style>
-/* ── HERO ── */
-.community-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-  min-height: var(--hero-min-h);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-.hero-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-}
-.community-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-}
+
 .section-header { margin-bottom: 48px; }
 
 /* ── ROLES ── */
@@ -413,7 +389,6 @@ const roles = [
 }
 
 @media (max-width: 768px) {
-  .community-hero { grid-template-columns: 1fr; }
   .roles,
   .students,
   .apply { padding-top: 64px; padding-bottom: 64px; }

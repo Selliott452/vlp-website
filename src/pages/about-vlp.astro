@@ -1,5 +1,6 @@
 ---
 import PageLayout  from '../layouts/PageLayout.astro';
+import PageHero    from '../components/PageHero.astro';
 import DonateBand  from '../components/DonateBand.astro';
 import { donateUrl } from '../config';
 
@@ -49,17 +50,15 @@ const funders = [
   <main>
 
     <!-- ── HERO ── -->
-    <section class="about-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">About VLP</div>
-        <h1>Equal access to justice for every Mainer.</h1>
-        <p class="hero-sub">
-          Our vision: all Mainers in need of civil legal assistance will be able
-          to access expert, timely help, regardless of their ability to pay.
-        </p>
-      </div>
+    <PageHero>
+      <div class="eyebrow">About VLP</div>
+      <h1>Equal access to justice for every Mainer.</h1>
+      <p class="hero-sub">
+        Our vision: all Mainers in need of civil legal assistance will be able
+        to access expert, timely help, regardless of their ability to pay.
+      </p>
 
-      <div class="hero-photo-placeholder">
+      <div slot="right" class="hero-photo-placeholder">
         <div class="photo-icon" aria-hidden="true">
           <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
             <circle cx="24" cy="18" r="9" stroke="currentColor" stroke-width="2"/>
@@ -69,9 +68,7 @@ const funders = [
         <p class="photo-label">Staff photo</p>
         <p class="photo-hint">800×600px recommended</p>
       </div>
-
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+    </PageHero>
 
     <!-- ── MISSION + STORY ── -->
     <section class="story">
@@ -229,17 +226,6 @@ const funders = [
 
 <style>
 /* ── HERO ── */
-.about-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-  min-height: var(--hero-min-h);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
 .hero-photo-placeholder {
   position: relative;
   z-index: 1;
@@ -267,14 +253,6 @@ const funders = [
   font-size: 0.72rem;
   color: rgba(255,255,255,0.2);
 }
-.about-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
-.hero-sub { max-width: 580px; }
 
 /* ── STORY ── */
 .story {
@@ -497,7 +475,6 @@ const funders = [
 }
 
 @media (max-width: 768px) {
-  .about-hero { grid-template-columns: 1fr; }
   .hero-photo-placeholder { display: none; }
   .story,
   .who-we-serve,

@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import PageHero   from '../components/PageHero.astro';
 import { careersApplyUrl } from '../config';
 
 const benefits = [
@@ -79,18 +80,15 @@ const expectations = [
   <main>
 
     <!-- ── HERO ── -->
-    <section class="careers-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">Join Our Team</div>
-        <h1>Work that matters.</h1>
-        <p class="hero-sub">
-          At VLP, every role contributes directly to expanding access to
-          justice for Mainers who need it most. We're a small, collaborative
-          team committed to equity, community, and meaningful work.
-        </p>
-      </div>
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+    <PageHero>
+      <div class="eyebrow">Join Our Team</div>
+      <h1>Work that matters.</h1>
+      <p class="hero-sub">
+        At VLP, every role contributes directly to expanding access to
+        justice for Mainers who need it most. We're a small, collaborative
+        team committed to equity, community, and meaningful work.
+      </p>
+    </PageHero>
 
     <!-- ── OPEN POSITION ── -->
     <section class="opening">
@@ -244,21 +242,7 @@ const expectations = [
 </PageLayout>
 
 <style>
-/* ── HERO ── */
-.careers-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-  overflow: hidden;
-}
-.hero-inner { max-width: 640px; }
-.careers-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
+
 .section-header { margin-bottom: 48px; }
 
 /* ── OPENING ── */
@@ -382,7 +366,7 @@ const expectations = [
   flex-direction: column;
   gap: 16px;
   position: sticky;
-  top: 80px;
+  top: 112px; /* 80px nav + 32px gap */
 }
 .apply-box h3 { color: #fff; margin-bottom: 0; font-size: 1.05rem; font-weight: 700; }
 .apply-box p {

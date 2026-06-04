@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import PageHero   from '../components/PageHero.astro';
 import { intakeUrl } from '../config';
 ---
 
@@ -11,17 +12,14 @@ import { intakeUrl } from '../config';
   <main>
 
     <!-- ── HERO ── -->
-    <section class="contact-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">Contact Us</div>
-        <h1>We're here to help.</h1>
-        <p class="hero-sub">
-          Whether you need legal assistance, want to volunteer, or have a general
-          inquiry, here's how to reach the right person at VLP.
-        </p>
-      </div>
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+    <PageHero>
+      <div class="eyebrow">Contact Us</div>
+      <h1>We're here to help.</h1>
+      <p class="hero-sub">
+        Whether you need legal assistance, want to volunteer, or have a general
+        inquiry, here's how to reach the right person at VLP.
+      </p>
+    </PageHero>
 
     <!-- ── CONTACT METHODS ── -->
     <section class="contact-main">
@@ -144,21 +142,6 @@ import { intakeUrl } from '../config';
 </PageLayout>
 
 <style>
-/* ── HERO ── */
-.contact-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-  overflow: hidden;
-}
-.hero-inner { max-width: 640px; }
-.contact-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
 /* ── CONTACT MAIN ── */
 .contact-main {
   background: var(--cream);

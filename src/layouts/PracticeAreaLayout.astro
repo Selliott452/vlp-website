@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import QuickExit  from '../components/QuickExit.astro';
 import Nav        from '../components/Nav.astro';
 import Footer     from '../components/Footer.astro';
+import PageHero   from '../components/PageHero.astro';
 import { intakeUrl } from '../config';
 
 interface Props {
@@ -50,14 +51,11 @@ const {
     )}
 
     <!-- ── HERO ── -->
-    <section class="page-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">Areas of Practice</div>
-        <h1>{heading}</h1>
-        <p class="hero-sub">{intro}</p>
-      </div>
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+    <PageHero>
+      <div class="eyebrow">Areas of Practice</div>
+      <h1>{heading}</h1>
+      <p class="hero-sub">{intro}</p>
+    </PageHero>
 
     <!-- ── BREADCRUMB ── -->
     <div class="breadcrumb-bar">
@@ -136,36 +134,6 @@ const {
 .safety-banner strong { color: #fff; }
 .safety-banner a { color: #f4a78a; text-decoration: underline; }
 
-/* ── HERO ── */
-.page-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-  min-height: var(--hero-min-h);
-  overflow: hidden;
-}
-.hero-gradient {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 80% at 100% 0%, rgba(46,134,193,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at 0% 100%, rgba(93,173,226,0.07) 0%, transparent 50%);
-  pointer-events: none;
-}
-.hero-inner { max-width: 700px; }
-.page-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
-.hero-sub {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: rgba(255,255,255,0.72);
-  line-height: 1.7;
-}
 
 /* ── BREADCRUMB ── */
 .breadcrumb-bar {
@@ -205,8 +173,7 @@ const {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: sticky;
-  top: 32px;
+  position: static;
 }
 
 /* ── BOTTOM CTA ── */
@@ -238,6 +205,7 @@ const {
 .cta-actions { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
 /* ── RESPONSIVE ── */
+
 @media (max-width: 768px) {
   .safety-banner { padding-top: 14px; padding-bottom: 14px; }
   .breadcrumb-bar { padding-top: 12px; padding-bottom: 12px; }

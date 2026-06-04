@@ -8,13 +8,12 @@
   --blue:       #2e86c1;
   --blue-light: #5dade2;
   --cream:      #f4f8fc;
-  --white:      #ffffff;
   --slate:      #4a6880;
   --light-gray: #e8f0f8;
   --text:       #152d44;
   --danger:     #7b2d26;
   --page-padding-x: 80px;
-  --hero-pt:    96px;
+  --hero-pt:    56px;
   --hero-pb:    88px;
   --hero-min-h: 620px;
 }

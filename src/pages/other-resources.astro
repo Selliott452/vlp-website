@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import PageHero   from '../components/PageHero.astro';
 
 const legalResources = [
   {
@@ -121,18 +122,15 @@ const communityResources = [
   <main>
 
     <!-- ── HERO ── -->
-    <section class="resources-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">Other Resources</div>
-        <h1>You have options beyond VLP.</h1>
-        <p class="hero-sub">
-          VLP is one part of Maine's civil legal aid network. The organizations
-          below offer free and low-cost legal help, self-help tools, and
-          community support for a wide range of needs.
-        </p>
-      </div>
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+    <PageHero>
+      <div class="eyebrow">Other Resources</div>
+      <h1>You have options beyond VLP.</h1>
+      <p class="hero-sub">
+        VLP is one part of Maine's civil legal aid network. The organizations
+        below offer free and low-cost legal help, self-help tools, and
+        community support for a wide range of needs.
+      </p>
+    </PageHero>
 
     <!-- ── LEGAL RESOURCES ── -->
     <section class="resource-section">
@@ -194,22 +192,6 @@ const communityResources = [
 </PageLayout>
 
 <style>
-/* ── HERO ── */
-.resources-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-
-  overflow: hidden;
-}
-.hero-inner { max-width: 640px; }
-.resources-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
 /* page-level section-header overrides: left-aligned, tighter margin, smaller h2 */
 .section-header {
   text-align: left;

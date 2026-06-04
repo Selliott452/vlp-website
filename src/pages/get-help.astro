@@ -1,5 +1,6 @@
 ---
 import PageLayout    from '../layouts/PageLayout.astro';
+import PageHero      from '../components/PageHero.astro';
 import Testimonial   from '../components/Testimonial.astro';
 import { intakeUrl, testimonials } from '../config';
 
@@ -88,34 +89,30 @@ const faqs = [
   <main>
 
     <!-- ── HERO ── -->
-    <section class="help-hero">
-      <div class="hero-inner">
-        <div class="eyebrow">Free Civil Legal Assistance</div>
-        <h1>You don't have to face this alone.</h1>
-        <p class="hero-sub">
-          If you are dealing with a legal problem and can't afford a lawyer,
-          VLP may be able to connect you with a volunteer attorney,
-          at no cost to you.
-        </p>
-        <div class="hero-actions">
-          <a href="#how-to-apply" class="btn-primary">
-            Apply for Help
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <div class="hero-phone">
-            <span class="phone-label">Or call intake</span>
-            <a href="tel:+12075444886" class="phone-number">207-544-4886</a>
-            <span class="phone-hours">Mon 1–3:30 pm · Fri 9–11:30 am</span>
-          </div>
+    <PageHero>
+      <div class="eyebrow">Free Civil Legal Assistance</div>
+      <h1>You don't have to face this alone.</h1>
+      <p class="hero-sub">
+        If you are dealing with a legal problem and can't afford a lawyer,
+        VLP may be able to connect you with a volunteer attorney,
+        at no cost to you.
+      </p>
+      <div class="hero-actions">
+        <a href="#how-to-apply" class="btn-primary">
+          Apply for Help
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="hero-phone">
+          <span class="phone-label">Or call intake</span>
+          <a href="tel:+12075444886" class="phone-number">207-544-4886</a>
+          <span class="phone-hours">Mon 1–3:30 pm · Fri 9–11:30 am</span>
         </div>
       </div>
 
-      <Testimonial quote={testimonials.client?.quote} attribution={testimonials.client?.attribution} />
-
-      <div class="hero-gradient" aria-hidden="true"></div>
-    </section>
+      <Testimonial slot="right" quote={testimonials.client?.quote} attribution={testimonials.client?.attribution} />
+    </PageHero>
 
     <!-- ── EMERGENCY NOTICE ── -->
     <div class="emergency-notice" role="alert">
@@ -334,35 +331,7 @@ const faqs = [
 </PageLayout>
 
 <style>
-/* ── HERO ── */
-.help-hero {
-  background: var(--navy);
-  position: relative;
-  padding: var(--hero-pt) var(--page-padding-x) var(--hero-pb);
-  min-height: var(--hero-min-h);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-.help-hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
-.hero-sub {
-  max-width: 560px;
-  margin-bottom: 48px;
-}
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
+
 .hero-phone {
   display: flex;
   flex-direction: column;
@@ -376,9 +345,8 @@ const faqs = [
   color: var(--blue-light);
 }
 .phone-number {
-  font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   text-decoration: none;
   transition: color 0.2s;
@@ -631,9 +599,8 @@ const faqs = [
   margin-bottom: 20px;
 }
 .inline-phone {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   color: #fff;
   text-decoration: none;
   transition: color 0.2s;
@@ -690,7 +657,6 @@ const faqs = [
 }
 
 @media (max-width: 768px) {
-  .help-hero { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; gap: 28px; align-items: flex-start; }
   .emergency-notice { padding-top: 16px; padding-bottom: 16px; }
   .practice-areas,
