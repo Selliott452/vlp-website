@@ -1,0 +1,197 @@
+---
+import PageHero    from './PageHero.astro';
+import { siteStats } from '../config';
+---
+
+<PageHero class="home-hero">
+
+  <!-- Background overlays -->
+  <div slot="background" class="hero-bg-pattern"></div>
+
+  <!-- Left column -->
+  <div class="hero-eyebrow">Maine's legal aid nonprofit</div>
+  <h1>
+    Justice shouldn't depend on your
+    <em>ability to pay.</em>
+  </h1>
+  <p class="hero-mission">
+    We connect Mainers facing civil legal challenges with dedicated volunteer
+    attorneys, providing expert help to those in need, across every
+    county in the state.
+  </p>
+  <div class="hero-actions">
+    <a href="/get-help" class="btn-primary">I Need Legal Help →</a>
+    <a href="/for-attorneys" class="btn-outline">Volunteer as Attorney</a>
+  </div>
+
+  <!-- Right column -->
+  <div slot="right" class="hero-stats">
+    <div class="hero-stat-block">
+      <h2>{siteStats.clientsServed}</h2>
+      <p>Mainers helped with civil legal matters every year</p>
+    </div>
+    <div class="hero-stats-row">
+      <div class="hero-mini-stat">
+        <h3>{siteStats.countiesServed}</h3>
+        <p>Maine counties served</p>
+      </div>
+      <div class="hero-mini-stat">
+        <h3>{siteStats.yearsServing}</h3>
+        <p>years serving Maine</p>
+      </div>
+    </div>
+  </div>
+
+</PageHero>
+
+<style>
+  /* ── Override PageHero defaults for homepage ── */
+  :global(.home-hero) {
+    padding: 0;
+  }
+  :global(.home-hero .hero-inner) {
+    padding: 56px 64px 56px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeUp 0.8s ease both;
+  }
+  :global(.home-hero .hero-inner h1) {
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  :global(.home-hero .hero-inner h1 em) {
+    font-style: italic;
+    color: var(--blue-light);
+  }
+  :global(.home-hero .hero-right) {
+    padding: 56px 80px 56px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  /* Background pattern */
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(46,134,193,0.08) 0%, transparent 55%),
+      radial-gradient(circle at 15% 80%, rgba(46,134,193,0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Eyebrow */
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--blue);
+  }
+
+  /* Mission text */
+  .hero-mission {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 48px;
+  }
+
+  /* Stats */
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+  }
+  .hero-stat-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(46,134,193,0.2);
+    border-radius: 6px;
+    padding: 40px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .hero-stat-block h2 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .hero-stat-block p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .hero-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .hero-mini-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 24px 28px;
+    text-align: center;
+  }
+  .hero-mini-stat h3 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .hero-mini-stat p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    :global(.home-hero .hero-inner) { padding: 72px 48px 40px; }
+    :global(.home-hero .hero-right) { padding: 0 48px 72px; }
+  }
+
+  @media (max-width: 768px) {
+    :global(.home-hero .hero-inner) { padding: 48px 20px 32px; }
+    :global(.home-hero .hero-inner h1) { font-size: 2.2rem; }
+    :global(.home-hero .hero-right) { padding: 0 20px 48px; }
+    .hero-mission { font-size: 0.95rem; }
+    .hero-stat-block { padding: 28px 24px; }
+    .hero-stat-block h2 { font-size: 2.8rem; }
+    .hero-stats-row { gap: 12px; }
+    .hero-mini-stat { padding: 18px 16px; }
+    .hero-mini-stat h3 { font-size: 1.4rem; }
+  }
+
+  @media (max-width: 380px) {
+    :global(.home-hero .hero-inner h1) { font-size: 1.9rem; }
+    .hero-stats-row { grid-template-columns: 1fr; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
