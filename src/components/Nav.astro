@@ -76,13 +76,16 @@ const links = [
   }
   .nav-logo:hover { opacity: 0.85; }
   .nav-logo-crop {
-    height: 44px;
+    height: 47px;
     overflow: hidden;
     flex-shrink: 0;
-    filter: drop-shadow(0 1px 4px rgba(93,173,226,0.35));
   }
   .nav-logo-img {
     height: 62px;
+    filter:
+      drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 1px #fff);
     width: auto;
     display: block;
   }
@@ -198,7 +201,7 @@ const links = [
   /* Larger desktop screens */
   @media (min-width: 1400px) {
     nav { height: 80px; padding: 0 32px; }
-    .nav-logo-crop { height: 50px; }
+    .nav-logo-crop { height: 53px; }
     .nav-logo-img { height: 70px; }
     .nav-logo-name { font-size: 1.05rem; }
     .nav-links { gap: 36px; }
@@ -224,7 +227,7 @@ const links = [
     nav { height: 56px; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
-    .nav-logo-crop { height: 32px; }
+    .nav-logo-crop { height: 35px; }
     .nav-logo-img { height: 46px; }
   }
 </style>
